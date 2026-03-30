@@ -2,7 +2,7 @@
 title: Handleiding
 ---
 
-# ErgoTimer — Referentiehandleiding
+# ErgoTimer — Handleiding
 
 ## Inhoudsopgave
 
