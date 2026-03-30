@@ -1,3 +1,5 @@
-accounts/
-config/
-data/
+/*
+!/pages
+!/themes
+!/plugins
+!.gitignore
