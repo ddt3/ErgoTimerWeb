@@ -18,7 +18,6 @@ links:
             target: 'ErgoTimer Privacy Statement'
 title: Home
 ---
-## Full Description
 
 **Who is ErgoTimer for?**
 
