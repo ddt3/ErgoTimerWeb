@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'PicoFeed' => array($vendorDir . '/p3k/picofeed/lib'),
+    'Behat\\Gherkin' => array($vendorDir . '/behat/gherkin/src'),
 );
