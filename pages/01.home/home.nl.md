@@ -46,6 +46,5 @@ Vertel ErgoTimer hoeveel uur je wilt werken, hoe lang een mentale taak mag duren
 **Jouw privacy is beschermd**
 
 ErgoTimer slaat alles lokaal op je apparaat op. Geen accounts, geen internetverbinding, geen tracking, geen advertenties. Jouw gegevens verlaten nooit je telefoon.
----
 
 *ErgoTimer — Plan slim. Herstel goed.*
