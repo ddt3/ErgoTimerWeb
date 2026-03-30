@@ -5,7 +5,7 @@ title: Over
 ## Over mij, de ontwikkelaar
 ## Een beroerte die ik niet zag aankomen
 
-Op woensdagochtend 25 juni 2025 veranderde mijn leven in één klap. Ik kreeg een beroerte — op mijn 55ste. Dat stond niet op mijn bingo kaart, zoals ik later op mijn blog schreef. Op een dag was ik gewoon een softwaredeveloper die zijn werk deed; de volgende dag lag ik op de Brain Care Unit van het VieCuri ziekenhuis, linkszijdig verlamd, en probeerde ik te typen met een hand die niet wilde meewerken.
+Op woensdagochtend 25 juni 2025 veranderde mijn leven in één klap. Ik kreeg een beroerte — op mijn 55ste. Dat stond niet op mijn bingo kaart, zoals ik later op mijn blog schreef. Op een dag was ik gewoon een System Consultant die zijn werk deed; de volgende dag lag ik op de Brain Care Unit van het VieCuri ziekenhuis, linkszijdig verlamd, en probeerde ik te typen met een hand die niet wilde meewerken.
 
 Ik had geluk. Op donderdag liep ik. Op vrijdag kon ik traplopen en mocht ik naar huis. Lichamelijk ging het herstel sneller dan ik had mogen verwachten.
 

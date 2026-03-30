@@ -5,7 +5,7 @@ title: About
 ## About me, the developer
 ## A stroke I didn't see coming
 
-On Wednesday morning, June 25, 2025, my life changed in an instant. I had a stroke — at 55. It wasn't on my bingo card, as I later wrote on my blog. One day I was a software developer going about my work; the next I was lying in the Brain Care Unit at VieCuri hospital, left-sided paralysis, trying to type with a hand that didn't cooperate.
+On Wednesday morning, June 25, 2025, my life changed in an instant. I had a stroke — at 55. It wasn't on my bingo card, as I later wrote on my blog. One day I was a System Consultant going about my work; the next I was lying in the Brain Care Unit at VieCuri hospital, left-sided paralysis, trying to type with a hand that didn't cooperate.
 
 I was lucky. On Thursday I walked. On Friday I could climb stairs and go home. Physically, things moved faster than I had any right to expect.
 
