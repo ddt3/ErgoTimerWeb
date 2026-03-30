@@ -1,0 +1,38 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block content %}
+
+<div class="row main-row">
+
+	<div class="3u 12u(mobile) sidebars">
+		{% block sidebar2 %}
+			{% include 'partials/sidebar2.html.twig' %}
+		{% endblock sidebar2 %}
+	</div>
+
+	<div class="6u 12u(mobile) important(mobile)">
+		<section class="middle-content">
+			{% block inner_content %}
+				{{ page.content|raw }}
+			{% endblock inner_content %}
+		</section>
+	</div>
+
+	<div class="3u 12u(mobile) sidebars">
+		{% set options = { columns: 1 } %}
+		{% set standards = page.find('/components/links/_sidebar1').header %}
+		{% if standards.links %}
+			{% set links = {list: standards.links} %}
+			{% if standards.title %}
+				{% set links = links|merge({heading: standards.title}) %}
+			{% endif %}
+			{% set options= options|merge({links: links}) %}
+		{% endif %}
+		{% block sidebars %}
+			{% include 'partials/sidebar1.html.twig' with options %}
+		{% endblock sidebars %}
+	</div>
+
+</div>
+
+{% endblock %}

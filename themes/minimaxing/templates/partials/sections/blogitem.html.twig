@@ -1,0 +1,11 @@
+{% set blogitem = blogitem|defined(page.find('/blog').collection('blogroll')|first) %}
+<h2>{{ blogitem.header.title }}</h2>
+<a class="comments" href="{{ blogitem.header.link }}">33 comments</a>
+
+<a href="{{ blogitem.header.link }}"><img src="{{ blogitem.media['feature.jpg'].url }}" alt="" class="top blog-post-image" /></a>
+
+{{ blogitem.content|raw }}
+
+<footer class="controls">
+	<a href="{{ blogitem.header.link }}" class="button">Continue Reading</a>
+</footer>

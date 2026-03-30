@@ -1,0 +1,29 @@
+{% extends 'partials/base.html.twig' %}
+
+{% block banner %}
+	{% include 'partials/banner.html.twig' %}
+{% endblock %}
+
+{% block content %}
+
+	<div class="row main-row">
+		<div class="4u 12u(mobile)">
+			{% include 'partials/sections/cta.html.twig' with { text_copy: page.content, buttons: header.controls } %}
+		</div>
+		<div class="4u 12u(mobile)">
+			{% include 'partials/sections/bios.html.twig' %}
+		</div>
+		<div class="4u 12u(mobile)">
+			{% include 'partials/sections/links.html.twig' %}
+		</div>
+	</div>
+	<div class="row main-row">
+		<div class="6u 12u(mobile)">
+			{% include 'partials/sections/stories.html.twig' %}
+		</div>
+		<div class="6u 12u(mobile)">
+			{% include 'partials/featured-post.html.twig' %}
+		</div>
+	</div>
+
+{% endblock %}

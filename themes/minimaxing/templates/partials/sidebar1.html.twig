@@ -1,0 +1,11 @@
+{% include 'partials/sections/bios.html.twig' %}
+{% if links or page.header.links %}
+	{% set options = {} %}
+	{% if links %}
+		{% set options = options|merge({links: links}) %}
+	{% endif %}
+	{% if columns %}
+		{% set options = options|merge({columns: columns}) %}
+	{% endif %}
+	{% include 'partials/sections/links.html.twig' with options %}
+{% endif %}

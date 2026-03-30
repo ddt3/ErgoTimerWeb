@@ -1,0 +1,28 @@
+/* custom additions */
+a.tel:link {
+    text-decoration: none;
+}
+
+.google-map {
+    margin-bottom: 1em;
+}
+
+input.fullname, input.email {
+    width: 16em;
+}
+
+textarea.ample, input.subject {
+    min-width: 80%;
+}
+
+textarea.ample {
+    min-height: 5em;
+}
+
+.form-field {
+    margin-bottom: 1.5em;
+}
+
+.form-label {
+    margin-bottom: 0.3em;
+}

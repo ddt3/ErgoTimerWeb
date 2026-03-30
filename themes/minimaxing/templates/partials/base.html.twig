@@ -1,0 +1,109 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+{{ dump("#{grav.theme.getBlueprint.name} #{grav.theme.getBlueprint.version}") }}
+
+<!DOCTYPE HTML>
+<!--
+	Minimaxing by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html lang="{{ grav.language.getActive ?: theme_config.default_lang }}">
+{% block head %}
+    <head>
+        <meta charset="utf-8" />
+        <title>{% if header.title %}{{ header.title|e('html') }} - {% endif %}{{ site.title|default('Minimaxing by HTML5 UP')|e('html') }}</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {% block stylesheets %}
+            {% if browser.getBrowser == 'msie' and browser.getVersion <= 8 %}
+                {% do assets.addJs('theme://js/ie/html5shiv.js') %}
+            {% endif %}
+            {% do assets.addCss('theme://css/main.css') %}
+            {% do assets.addCss('theme://css/site.css') %}
+            {% if browser.getBrowser == 'msie' and browser.getVersion <= 9 %}
+                {% do assets.addCss('theme://css/ie9.css') %}
+            {% endif %}
+            {% do assets.addCss('theme://css/main-extensions.css') %}
+            {% do assets.addCss('theme://css/custom.css') %}
+        {% endblock %}
+
+        {% include 'partials/metadata.html.twig' %}
+
+        <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png') }}" />
+        <link rel="canonical" href="{{ page.url(true, true) }}" />
+
+        {% block javascripts %}
+
+            {% block jquery %}
+                {{ include('partials/asset-jquery.html.twig') }}
+            {% endblock %}
+
+            {% do assets.addJs('theme://js/skel.min.js', {'group':'bottom'}) %}
+            {% do assets.addJs('theme://js/skel-viewport.min.js', {'group':'bottom'}) %}
+            {% do assets.addJs('theme://js/util.js', {'group':'bottom'}) %}
+            {% if browser.getBrowser == 'msie' and browser.getVersion <= 8 %}
+                {% do assets.addJs('theme://js/ie/respond.min.js', {'group':'bottom'}) %}
+            {% endif %}
+            {% do assets.addJs('theme://js/main.js', {'group':'bottom'}) %}
+        {% endblock %}
+
+        {% block assets deferred %}
+            {{ assets.css()|raw }}
+            {{ assets.js()|raw }}
+        {% endblock %}
+
+    </head>
+{% endblock head %}
+
+<body id="top" class="{{ page.header.body_classes }}">
+
+<div id="page-wrapper">
+
+{% block header %}
+    <div id="header-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="12u">
+
+                    <header id="header">
+                        <h1><a href="{{ home_url }}" id="logo">{{ config.site.heading ?: config.site.title }}</a></h1>
+
+                        {% block header_navigation %}
+                        <nav id="nav">
+                            {% include 'partials/navigation.html.twig' %}
+                        </nav>
+                        {% endblock %}
+                    </header>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block banner %}{% endblock %}
+
+{% block body %}
+    <div id="main">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <div id="footer-wrapper">
+        <div class="container">
+            {% include 'partials/footer.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
+
+</div>
+
+{% block bottom deferred %}
+    {{ assets.js('bottom')|raw }}
+{% endblock %}
+</body>
+</html>

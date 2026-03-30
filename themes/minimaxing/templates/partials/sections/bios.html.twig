@@ -1,0 +1,9 @@
+<section>
+	{% set creators = page.find('/components/creators') %}
+	{{ creators.content|raw }}
+	<ul class="small-image-list">
+		{% for module in creators.collection %}
+			{{ module.content|raw }}
+		{% endfor %}
+	</ul>
+</section>

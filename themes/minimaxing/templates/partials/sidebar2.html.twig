@@ -1,0 +1,11 @@
+{% set options = { columns: 1, per_column: 50 } %} {# 50 is just an arbitrary implausibly high number #}
+{% set compelling = page.find('/components/links/_compelling').header %}
+{% if compelling.links %}
+	{% set links = {list: compelling.links} %}
+	{% if compelling.title %}
+		{% set options = options|merge({heading: compelling.title}) %}
+	{% endif %}
+	{% set options= options|merge({links: links}) %}
+	{% include 'partials/sections/links.html.twig' with options %}
+{% endif %}
+{% include 'partials/sections/statement.html.twig' %}
