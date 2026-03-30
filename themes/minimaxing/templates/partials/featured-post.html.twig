@@ -1,6 +1,0 @@
-<article class="blog-post">
-	{% set blogroll = page.find('/blog') %}
-	{# blogroll.content #} {# hmmm, handy or no? #}
-	{% set featured = blogroll.collection('blogroll')|first %}
-	{{ include('partials/sections/blogitem.html.twig', {blogitem: featured})}}
-</article>

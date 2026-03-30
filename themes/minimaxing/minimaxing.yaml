@@ -1,5 +1,0 @@
-enabled: true
-dropdown:
-  enabled: false
-conformance: # to source HTML5Up theme and assets
-  jquery: true
