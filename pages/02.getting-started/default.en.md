@@ -2,8 +2,6 @@
 title: 'Getting Started'
 ---
 
-# Getting Started with ErgoTimer
-
 ## Welcome to ErgoTimer
 
 ErgoTimer helps you plan a balanced working day by automatically scheduling mental tasks, physical breaks, and rest periods. This guide walks you through everything you need to do to get your first schedule up and running.

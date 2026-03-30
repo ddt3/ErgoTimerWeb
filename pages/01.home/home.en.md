@@ -19,7 +19,7 @@ links:
 title: Home
 ---
 
-**Who is ErgoTimer for?**
+## Who is ErgoTimer for?
 
 If you are recovering from a stroke, traumatic brain injury, or another form of Acquired Brain Injury — or if you live with chronic fatigue or limited cognitive capacity — ErgoTimer was made for you. It is also ideal for anyone following structured work-rest routines as part of rehabilitation.
 
@@ -27,11 +27,11 @@ ErgoTimer takes the mental effort out of planning your day, so you can focus on 
 
 ErgoTimer was built by a software developer who experienced a stroke in 2025 and used his technical background to create the tool he needed during his own recovery. Designed from the inside out — by someone who lives with ABI every day.
 
-**How it works**
+## How it works
 
 Tell ErgoTimer how many hours you want to work, how long a mental task should last before you need a break, and when your day starts. The app generates a complete schedule — and guides you through it with alarms, a countdown timer, and gentle micro-pause reminders.
 
-**Key features**
+## Key features
 
 - Automatic daily schedule based on your personal settings
 - Balanced mix of mental tasks, physical breaks, and rest periods

@@ -2,7 +2,7 @@
 title: Manual
 ---
 
-# ErgoTimer — Manual
+## ErgoTimer — Manual
 
 ## Table of Contents
 

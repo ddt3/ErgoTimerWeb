@@ -2,7 +2,7 @@
 title: Privacy
 ---
 
-# Privacyverklaring voor ErgoTimer
+## Privacyverklaring voor ErgoTimer
 
 **Laatst bijgewerkt: 25 maart 2026**
 

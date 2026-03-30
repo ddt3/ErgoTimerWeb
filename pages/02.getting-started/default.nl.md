@@ -1,7 +1,6 @@
 ---
 title: 'Aan de slag'
 ---
-# Aan de slag met ErgoTimer
 
 ## Welkom bij ErgoTimer
 

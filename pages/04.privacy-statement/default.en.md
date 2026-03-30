@@ -2,7 +2,7 @@
 title: Privacy
 ---
 
-# Privacy Statement for ErgoTimer
+## Privacy Statement for ErgoTimer
 
 **Last updated: March 25th 2026**
 
