@@ -1,5 +1,5 @@
 ---
-title: Over
+title: 'Over mij'
 ---
 
 ## Over mij, de ontwikkelaar
