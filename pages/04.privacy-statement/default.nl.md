@@ -4,7 +4,7 @@ title: Privacy
 
 ## Privacyverklaring voor ErgoTimer
 
-**Laatst bijgewerkt: 25 maart 2026**
+**Laatst bijgewerkt: 3 april 2026**
 
 ## 1. Inleiding
 
@@ -26,7 +26,7 @@ De enige gegevens die de app opslaat, zijn uw **configuratievoorkeuren**, die lo
 - Begin- en eindtijd van de lunch
 - Interval voor micropauzeherinneringen
 - Voorkeur voor alarmgeluid
-- Gebruikersinterface-instellingen (bijv. rustige modus, taal)
+- Gebruikersinterface-instellingen (bijv. interfacemodus: Standaard/Rustig/Minimaal, taal)
 
 Deze configuratiegegevens dienen uitsluitend om uw instellingen te herstellen de volgende keer dat u de app opent.
 

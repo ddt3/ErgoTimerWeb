@@ -55,7 +55,7 @@ Doorloop de instellingensecties:
 ### Interface
 
 - **Taal**: Kies tussen Engels en Nederlands.
-- **Rustige interfacemodus**: Als je de standaardinterface te druk vindt, zet dit dan aan voor een eenvoudigere, rustigere weergave.
+- **Interfacemodus**: Kies tussen **Standaard**, **Rustig** (standaard) en **Minimaal**, afhankelijk van hoeveel details je wilt zien.
 
 ---
 
@@ -84,9 +84,12 @@ Elke rij toont de taaknaam, begintijd, eindtijd en duur. Neem even de tijd om he
 
 ## Stap 6: Je dag starten
 
-Wanneer je klaar bent om te beginnen, tik je op de knop **Dag starten**.
+Wanneer je klaar bent om te beginnen, gebruik je een van de startacties:
 
-De eerste taak in je schema begint meteen. Bovenaan het scherm zie je:
+- **Nu Inhaken**: spring in op het schema op basis van de huidige tijd (handig als je was vergeten te starten)
+- **Herstart**: start vanaf de eerste taak en verschuif het hele schema naar nu, afgerond naar beneden op 10 minuten
+
+De gekozen taak begint meteen. Bovenaan het scherm zie je:
 
 - De naam van de huidige taak
 - Een afteltimer die laat zien hoeveel tijd er nog over is
@@ -123,9 +126,9 @@ Aanpassingen herberekenen automatisch de rest van het schema zodat je totale wer
 - **Begin met kortere taken** — als je nieuw bent met gestructureerd plannen, begin dan met een maximale mentale taaktijd van 30–45 minuten en pas dit aan als je meer zelfvertrouwen krijgt.
 - **Respecteer de pauzes** — de fysieke pauzes en rustmomenten zijn geen optionele extra's; ze zijn een essentieel onderdeel van energiebeheer. Neem ze serieus.
 - **Gebruik micropauzeherinneringen** — tijdens een lange mentale taak kan een micropauze van 5 minuten (zoals koffie zetten) een groot verschil maken.
-- **Gebruik de rustige modus** als je de interface afleidend of overweldigend vindt.
+- **Gebruik Rustig of Minimaal** als je de interface afleidend of overweldigend vindt.
 - **Wees consistent** — hoe regelmatiger je ErgoTimer gebruikt, hoe beter je je eigen grenzen leert inschatten.
 
 ---
 
-*Zodra je instellingen zijn opgeslagen, is het starten van een nieuwe dag zo eenvoudig als de app openen en op **Dag starten** tikken.*
+*Zodra je instellingen zijn opgeslagen, is het starten van een nieuwe dag zo eenvoudig als de app openen en op **Nu Inhaken** of **Herstart** tikken, afhankelijk van je situatie.*

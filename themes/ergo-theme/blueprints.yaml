@@ -1,0 +1,18 @@
+name: Ergo Theme
+slug: ergo-theme
+type: theme
+version: 0.1.0
+description: Theme for ErgoTimer
+icon: rebel
+author:
+  name: Dries Dokter
+  email: dries@familie-dokter.net
+homepage: https://github.com/ddt3/grav-theme-ergo-theme
+demo: http://demo.yoursite.com
+keywords: grav, theme, etc
+bugs: https://github.com/ddt3/grav-theme-ergo-theme/issues
+readme: https://github.com/ddt3/grav-theme-ergo-theme/blob/develop/README.md
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.6.0' }

@@ -49,9 +49,10 @@ When no schedule has been generated yet, the screen shows:
 
 ### After generating a schedule
 
-Once a schedule is generated, the screen shows the full day in a colour-coded list. Two buttons appear at the bottom:
-- **Start Day** — starts the schedule from the first task
-- **Start from Now** — starts from the task that corresponds to the current time
+Once a schedule is generated, the screen shows the full day in a colour-coded list. Three action buttons appear at the bottom in one row:
+- **Add Task** — insert a manual task into your schedule
+- **Catch Up** — jumps into the current point in the existing schedule based on the current time
+- **Restart** — restarts from the first task and shifts the whole schedule to "now" (rounded down to the nearest 10 minutes)
 
 ---
 
@@ -133,13 +134,15 @@ When enabled, a reminder notification is shown during mental tasks at the specif
 #### Language
 Choose between **English** and **Dutch**. The app will display all text in the selected language.
 
-#### Calm Interface Mode
-**Default:** Off
+#### Interface Mode
+**Default:** Calm
 
-When enabled, the interface reduces visual complexity:
-- Increased spacing between elements
-- Secondary controls are hidden behind a single tap
-- Better suited for people who find dense interfaces overwhelming
+ErgoTimer offers three interface modes:
+- **Standard** — all details visible, controls always shown
+- **Calm** — less visual clutter, secondary controls behind one tap
+- **Minimal** — shows only essential task information by default (icon, name, duration)
+
+In Minimal mode, tapping a task reveals controls and full task text details.
 
 ---
 

@@ -27,9 +27,15 @@ ErgoTimer takes the mental effort out of planning your day, so you can focus on 
 
 ErgoTimer was built by a software developer who experienced a stroke in 2025 and used his technical background to create the tool he needed during his own recovery. Designed from the inside out — by someone who lives with ABI every day.
 
-## How it works
+## Built for Real Life
 
-Tell ErgoTimer how many hours you want to work, how long a mental task should last before you need a break, and when your day starts. The app generates a complete schedule — and guides you through it with alarms, a countdown timer, and gentle micro-pause reminders.
+Living with Acquired Brain Injury means understanding your limits. Mental tasks drain energy fast, and pushing too hard can set back your recovery. ErgoTimer was created by someone who lives with ABI every day — which means it's designed around the realities of managing cognitive load, not around assumptions.
+
+The app creates a personalised daily schedule that balances:
+- **Mental work** — focused tasks that require concentration
+- **Physical activity** — movement that lets your mind recover
+- **Rest breaks** — quiet downtime to recharge
+- **Lunch** — with an automatic rest period built in
 
 ## Key features
 

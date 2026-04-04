@@ -49,9 +49,10 @@ Wanneer er nog geen schema is gegenereerd, toont het scherm:
 
 ### Na het genereren van een schema
 
-Zodra een schema is gegenereerd, toont het scherm de volledige dag in een kleurgecodeerde lijst. Onderaan verschijnen twee knoppen:
-- **Dag starten** — start het schema vanaf de eerste taak
-- **Nu starten** — start vanaf de taak die overeenkomt met de huidige tijd
+Zodra een schema is gegenereerd, toont het scherm de volledige dag in een kleurgecodeerde lijst. Onderaan verschijnen drie actieknoppen in één rij:
+- **Taak toevoegen** — voeg handmatig een taak toe aan je schema
+- **Nu Inhaken** — spring in op het huidige punt van het bestaande schema op basis van de huidige tijd
+- **Herstart** — herstart vanaf de eerste taak en verschuif het hele schema naar "nu" (afgerond naar beneden op 10 minuten)
 
 ---
 
@@ -133,13 +134,15 @@ Wanneer ingeschakeld, verschijnt tijdens mentale taken op het opgegeven interval
 #### Taal
 Kies tussen **Engels** en **Nederlands**. De app toont alle tekst in de geselecteerde taal.
 
-#### Rustige interfacemodus
-**Standaard:** Uit
+#### Interfacemodus
+**Standaard:** Rustig
 
-Wanneer ingeschakeld, vermindert de interface de visuele complexiteit:
-- Meer ruimte tussen elementen
-- Secundaire bedieningselementen worden verborgen achter één tik
-- Beter geschikt voor mensen die drukke interfaces overweldigend vinden
+ErgoTimer biedt drie interfacemodi:
+- **Standaard** — alle details zichtbaar, knoppen altijd weergegeven
+- **Rustig** — minder visuele drukte, secundaire knoppen achter één tik
+- **Minimaal** — toont standaard alleen essentiële taakinformatie (pictogram, naam, duur)
+
+In de modus Minimaal tonen tikken op een taak zowel de knoppen als alle tekstdetails van die taak.
 
 ---
 

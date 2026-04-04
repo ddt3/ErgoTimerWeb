@@ -4,7 +4,7 @@ title: Privacy
 
 ## Privacy Statement for ErgoTimer
 
-**Last updated: March 25th 2026**
+**Last updated: April 3rd 2026**
 
 ## 1. Introduction
 
@@ -26,7 +26,7 @@ The only data the app stores is your **configuration preferences**, which are sa
 - Lunch start and end times
 - Micro-pause reminder interval
 - Alarm sound preference
-- User interface preferences (e.g. calm mode, language)
+- User interface preferences (e.g. interface mode: Standard/Calm/Minimal, language)
 
 This configuration data exists solely to restore your settings the next time you open the app.
 

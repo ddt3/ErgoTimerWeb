@@ -55,7 +55,7 @@ Work through the settings sections:
 ### Interface
 
 - **Language**: Choose between English and Dutch.
-- **Calm Interface Mode**: If you find the default interface too busy, turn this on for a simpler, less cluttered view.
+- **Interface Mode**: Choose between **Standard**, **Calm** (default), and **Minimal** depending on how much detail you want to see.
 
 ---
 
@@ -84,9 +84,12 @@ Each row shows the task name, start time, end time, and duration. Take a moment 
 
 ## Step 6: Start Your Day
 
-When you are ready to begin, tap the **Start Day** button.
+When you are ready to begin, use one of the start actions:
 
-The first task in your schedule will begin immediately. At the top of the screen you will see:
+- **Catch Up**: jumps into the schedule at the current time (use this if you forgot to start earlier)
+- **Restart**: starts from the first task and shifts the full schedule to now, rounded down to the nearest 10 minutes
+
+The selected task will begin immediately. At the top of the screen you will see:
 
 - The name of the current task
 - A countdown timer showing how much time is left
@@ -123,9 +126,9 @@ Any adjustments automatically recalculate the rest of the schedule so your total
 - **Start with shorter tasks** — if you're new to structured scheduling, begin with a max mental task time of 30–45 minutes and adjust upward as you feel comfortable.
 - **Honour the breaks** — the physical and rest breaks are not optional extras; they are a core part of managing your energy. Take them seriously.
 - **Use micro-pause reminders** — during a long mental task, a 5-minute micro-pause (like making a coffee) can make a real difference.
-- **Use Calm Mode** if you find the interface distracting or overwhelming.
+- **Use Calm or Minimal Mode** if you find the interface distracting or overwhelming.
 - **Be consistent** — the more regularly you use ErgoTimer, the better you will become at estimating your own limits.
 
 ---
 
-*Once your settings are saved, starting a new day is as simple as opening the app and tapping **Start Day**.*
+*Once your settings are saved, starting a new day is as simple as opening the app and tapping **Catch Up** or **Restart**, depending on your situation.*
