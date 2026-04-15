@@ -35,7 +35,7 @@ The app creates a personalised daily schedule that balances:
 - **Mental work** — focused tasks that require concentration
 - **Physical activity** — movement that lets your mind recover
 - **Rest breaks** — quiet downtime to recharge
-- **Lunch** — with an automatic rest period built in
+- **Fixed anchors** — immovable blocks like lunch, appointments, or therapy
 
 ## Key features
 
@@ -44,6 +44,7 @@ The app creates a personalised daily schedule that balances:
 - Countdown timer with alarm at each task transition
 - Mental battery indicator to track your energy level
 - Micro-pause reminders during longer mental tasks
+- Fixed anchors for lunch, appointments, therapy, and other non-movable blocks
 - Adjustable task durations while your day is running
 - Notification bar shows current task and time remaining
 - Calm interface mode for a less cluttered experience
@@ -54,3 +55,7 @@ The app creates a personalised daily schedule that balances:
 ErgoTimer stores everything locally on your device. No accounts, no internet connection, no tracking, no ads. Your data never leaves your phone.---
 
 *ErgoTimer — Schedule smart. Recover well.*
+
+<div class="right-align">
+ErgoTimer version 0.2.0
+</div>

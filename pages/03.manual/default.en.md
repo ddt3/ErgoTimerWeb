@@ -9,6 +9,7 @@ title: Manual
 1. [Overview](#1-overview)
 2. [Main Screen](#2-main-screen)
 3. [Settings](#3-settings)
+   - 3.0 [My Day](#30-my-day)
    - 3.1 [Core Schedule](#31-core-schedule)
    - 3.2 [Breaks & Recovery](#32-breaks--recovery)
    - 3.3 [Alerts](#33-alerts)
@@ -49,10 +50,10 @@ When no schedule has been generated yet, the screen shows:
 
 ### After generating a schedule
 
-Once a schedule is generated, the screen shows the full day in a colour-coded list. Three action buttons appear at the bottom in one row:
+Once a schedule is generated, the screen shows the full day as a scrollable calendar timeline. Action buttons appear at the bottom:
 - **Add Task** — insert a manual task into your schedule
 - **Catch Up** — jumps into the current point in the existing schedule based on the current time
-- **Restart** — restarts from the first task and shifts the whole schedule to "now" (rounded down to the nearest 10 minutes)
+- **Start Now** — regenerates the full schedule using the current time as the work window start, then immediately starts the first task. Only available within 60 minutes of the configured work window start time.
 
 ---
 
@@ -60,13 +61,31 @@ Once a schedule is generated, the screen shows the full day in a colour-coded li
 
 Open settings by tapping the **⚙️** icon in the top-right corner of the main screen. Settings are organised into collapsible sections. Tap a section header to expand or collapse it. Tap **Generate Schedule** at the bottom to apply your settings and create a new schedule.
 
+### 3.0 My Day
+
+This section defines the boundaries of your full day. The scheduler uses these times to decide where it may place generated tasks.
+
+#### Wake-up Time
+The time you wake up. Tasks will never be placed before this time.
+
+#### Bedtime
+The time your day ends. Tasks will never extend beyond this time.
+
+#### Work Window Start
+The earliest time the scheduler may place mental work. This is the start of your active working period.
+
+#### Work Window End
+The latest time at which work may end. No generated mental task will extend beyond this boundary.
+
+---
+
 ### 3.1 Core Schedule
 
 #### Total Work Hours
 **Range:** 1 hour to 9 hours, in 0.5-hour increments  
 **Default:** 4 hours
 
-The total number of hours of mental work to schedule in the day. Physical breaks, rest periods, bike rides, and lunch are not included in this count — only mental tasks.
+The total number of hours of mental work to schedule in the day. Physical breaks, rest periods, and fixed anchors are not included in this count — only mental tasks.
 
 #### Max Mental Task Duration
 **Range:** 30 minutes to 180 minutes (3 hours), in 30-minute increments  
@@ -81,33 +100,41 @@ The maximum continuous duration of a single mental task. When a mental task reac
 The minimum length of a physical or rest break inserted between mental tasks. This is used as a baseline — actual break lengths are calculated using the ratio described in [Section 9](#9-scheduling-logic).
 
 #### Start Time
-The time your working day begins. Set the hour and minute using the time picker. If a bike ride before work is configured, the bike ride will start at this time and the first mental task will begin after the bike ride ends.
+The time your working day begins. Set the hour and minute using the time picker. The scheduler uses this as the start of the first gap it can fill with generated work.
 
 ---
 
 ### 3.2 Breaks & Recovery
 
-#### Lunch Break
-**Default:** Off
+#### Fixed Anchors
 
-Toggle on to include a fixed lunch break in your schedule. When enabled, set:
+Fixed anchors are non-movable schedule blocks that reserve time for lunch, meetings, appointments, therapy, travel, or planned recovery. Each anchor has:
 
-- **Lunch Start** — the time at which lunch begins (e.g. 12:30)
-- **Lunch End** — the time at which lunch ends (e.g. 13:00)
+- **Name** — shown directly in the schedule
+- **Anchor type** — determines when the anchor is placed in the schedule
+- **Energy effect** — how the anchor affects the mental battery
 
-Lunch is a fixed anchor in the schedule. It cannot be moved by task adjustments. When a mental task would overlap with lunch, it is automatically split. A 30-minute rest period is automatically inserted after lunch ends.
+Anchor types:
 
-#### Bike Ride Before Work
-**Range:** 0 to 60 minutes, in 5-minute increments  
-**Default:** 0 (disabled)
+- **Fixed time** — placed at a specific start and end time. The start and end times are configured directly. In the anchor list, these show their start and end time.
+- **Before work** — placed immediately before the work window starts, with a configurable duration. In the anchor list, these show their type label and duration instead of a time range.
+- **After work** — placed immediately after the last generated work block ends, with a configurable duration. Fixed-time anchors scheduled later in the day are not affected. In the anchor list, these show their type label and duration instead of a time range.
 
-If set to a value greater than 0, a bike ride task is added to the start of the schedule, beginning at the configured start time. The first mental task begins after the bike ride ends.
+Energy effects:
 
-#### Bike Ride After Work
-**Range:** 0 to 60 minutes, in 5-minute increments  
-**Default:** 0 (disabled)
+- **Draining** — behaves like mental work for battery purposes
+- **Neutral** — reserves time without changing the battery
+- **Restoring** — behaves like a restorative break for battery purposes
 
-If set to a value greater than 0, a bike ride task is added to the end of the schedule, after all mental work and rest tasks.
+The scheduler never places generated work inside a fixed anchor. Instead, it fills the gaps before, between, and after anchors.
+
+In settings, each anchor card uses a compact two-row layout: the first row shows the anchor icon, name, and metadata; the second row contains the enable switch and edit/delete controls.
+
+Overlap behavior for fixed-time anchors:
+
+- You can save overlapping fixed-time anchors.
+- If overlapping fixed-time anchors are both **enabled**, their cards are highlighted with a red border in settings.
+- Schedule generation is blocked when enabled fixed-time anchors overlap. Disable one of the conflicting anchors and generate again.
 
 ---
 
@@ -138,11 +165,9 @@ Choose between **English** and **Dutch**. The app will display all text in the s
 **Default:** Calm
 
 ErgoTimer offers three interface modes:
-- **Standard** — all details visible, controls always shown
-- **Calm** — less visual clutter, secondary controls behind one tap
-- **Minimal** — shows only essential task information by default (icon, name, duration)
-
-In Minimal mode, tapping a task reveals controls and full task text details.
+- **Standard** — task blocks show task name, duration, and per-task energy range (start % → end %). The active-task header shows the live battery percentage bar.
+- **Calm** — task blocks show task name and duration with softer visual styling; per-task energy range is hidden in blocks. The active-task header still shows the live battery percentage bar.
+- **Minimal** — task blocks are icon-only and the active-task header hides the battery percentage bar.
 
 ---
 
@@ -157,22 +182,30 @@ When enabled, time is accelerated: 1 hour is treated as 1 minute. This mode is i
 
 ## 4. Schedule View
 
-The schedule is displayed as a vertical list of tasks, each represented as a coloured tile.
+The schedule is displayed as a scrollable vertical timeline (calendar view). A time axis on the left shows clock times; colour-coded task blocks are placed at their exact positions on the axis. A horizontal "now" line moves through the timeline as time passes, so you can always see where you are in your day at a glance.
 
-### Task Tile Layout
+If there is an empty gap between two scheduled tasks, ErgoTimer shows a subtle tappable gap row in that slot. Tapping the gap opens the Add Task dialog pre-filled with the full start and end time of that gap, so you can insert a manual task directly into the free period.
 
-Each tile shows:
-- **Task colour** (left border) — indicates task type (see [Section 10](#10-task-types))
-- **Task name** — e.g. "Mental Task", "Physical Break", "Lunch"
-- **Time range** — start time and end time (e.g. 09:00 – 10:30)
+### Task Block Layout
+
+Each block shows:
+- **Colour** — indicates task type (see [Section 10](#10-task-types))
+- **Task name** — e.g. "Mental Task", "Physical Break", or your fixed anchor name
+- **Time range** — start time and end time
 - **Duration** — shown in hours and/or minutes
-- **Mental battery range** — the energy level at the start and end of the task (for mental tasks and breaks)
+- **Mental battery range** — the energy level at the start and end of the task
+
+Task block colours still map to task type, but the block fill is softened for better readability and less visual intensity.
+
+Tapping any task block, including the currently running task, opens the task detail sheet.
+
+Short tasks (less than 20 minutes) use a compact single-line layout to prevent overflow.
 
 ### Task States
 
 - **Upcoming** — normal appearance, full colour
-- **Active (current task)** — shown prominently at the top of the screen with a large timer
-- **Completed** — shown with strikethrough text
+- **Active (current task)** — pulses gently to draw attention; shown with countdown timer
+- **Completed** — shown with reduced opacity
 
 ---
 
@@ -201,9 +234,12 @@ Tap **Next** to end the current task early and move to the next task. The remain
 
 ## 6. Adjusting the Schedule
 
-You can modify individual tasks in the schedule list while the day is running (or before starting).
+You can modify individual tasks in the schedule while the day is running (or before starting).
 
-To reveal adjustment controls for a task, tap the **edit icon** on the right side of the task tile.
+Tap any task block to open its detail sheet with the available actions.
+
+### Adding a Task in an Empty Gap
+If there is visible free time between two tasks, tap the gap row between them to open the time-blocked Add Task dialog. The dialog is pre-filled with the full gap boundaries. ErgoTimer then passes the task directly to the scheduler, which may insert a safety break or split a large mental task into multiple mental and break blocks if needed.
 
 ### Increasing Task Duration (+10 min)
 Tap **+10 min** to add 10 minutes to a task. For mental tasks, the duration cannot exceed the configured maximum mental task time. For rest and physical breaks, the duration can be increased freely.
@@ -227,8 +263,9 @@ The mental battery represents your cognitive energy level throughout the day. It
 
 ### How It Works
 
-- **Drains** during mental tasks and lunch
-- **Charges** during physical breaks, rest breaks, and bike rides
+- **Drains** during mental tasks and draining fixed anchors
+- **Charges** during physical breaks, rest breaks, and restoring fixed anchors
+- **Stays level** during neutral fixed anchors
 - **Range**: 0% (empty) to 100% (full)
 - The battery starts at 100% at the beginning of the day
 
@@ -251,7 +288,7 @@ ErgoTimer uses Android notifications to keep you informed while the app is runni
 ### Current Task Notification (Persistent)
 A persistent notification is shown in the Android notification bar while a task is active. It displays:
 - The current task name
-- The remaining time (updated approximately every 30 seconds)
+- A live countdown timer — implemented using Android's native chronometer, so the displayed time updates continuously and correctly even when the app is in the background, without requiring the app to be running.
 
 ### Task Completion Notification
 When a task's timer reaches zero:
@@ -259,8 +296,15 @@ When a task's timer reaches zero:
 - A notification is shown with the message "Task Complete!"
 - A dialog appears in the app (if the app is in the foreground)
 
+Task completion alarms are scheduled using Android's alarm clock mechanism (`AlarmManager.setAlarmClock()`). This ensures the alarm fires at the exact scheduled time even if the device is in power-saving or Doze mode. A small alarm clock icon (⏰) appears in the Android status bar while a task alarm is pending.
+
+### Next Task Notification (Idle Gap)
+When a task completes and the following task is not scheduled to start until a later time, ErgoTimer enters an idle period and returns to the schedule view with no active task. A background alarm is pre-scheduled for the next task's start time. When that time arrives:
+- If the app is in the foreground, the task starts automatically
+- If the app is in the background, a notification is shown to alert you that your next scheduled task is about to begin
+
 ### Micro-Pause Notification
-If micro-pause reminders are enabled, a notification appears at the configured interval during mental tasks, suggesting a short break.
+If micro-pause reminders are enabled, a notification appears at the configured interval during mental tasks, suggesting a short break. Like task completion alarms, micro-pause reminders also use the alarm clock mechanism for reliable delivery.
 
 ### Notification Channels
 ErgoTimer uses two notification channels:
@@ -277,12 +321,12 @@ You can manage these channels individually in Android's system notification sett
 
 When you tap **Generate Schedule**, ErgoTimer builds a complete day schedule as follows:
 
-1. **Optional bike ride (before)** — added at the start time if configured
-2. **Mental tasks** — work hours divided into blocks, each up to the maximum mental task duration
-3. **Breaks** — a physical or rest break is inserted after each mental task block
-4. **Lunch** — inserted as a fixed anchor at the configured lunch time, with a 30-minute rest afterwards
-5. **Remaining work** — mental tasks continue after the post-lunch rest
-6. **Optional bike ride (after)** — appended at the end if configured
+1. **Fixed anchors** are sorted by start time
+2. **Mental tasks** are generated into the available gaps, each up to the maximum mental task duration
+3. **Breaks** are inserted between mental blocks as needed
+4. **Fixed-time anchors** are inserted unchanged at their configured times
+5. **Remaining work** continues in any later gaps until the total work target is reached
+6. **After-work anchors** are placed immediately after the last generated work block, regardless of any fixed-time anchors scheduled later in the day
 
 ### Rest Duration Calculation
 
@@ -298,13 +342,9 @@ This value is always rounded up to the nearest 10 minutes.
 Max mental duration = 120 min, Min physical duration = 30 min, Mental task = 60 min  
 → min_rest = (60 / 120) × 30 = 15 min → rounded up to 20 min
 
-### Lunch Splitting
+### Anchor-Aware Scheduling
 
-If a mental task would overlap with the configured lunch time, it is automatically split:
-- The first part ends at lunch start time (minimum 10 minutes)
-- Lunch is inserted at the fixed time
-- A 30-minute rest follows lunch
-- The remaining work resumes after the rest
+If a generated mental block would overlap a fixed anchor, the scheduler stops filling that gap and inserts the anchor at its exact configured time. Mental work resumes only in the next available gap, and the anchor's energy effect is applied to the mental battery using the anchor duration.
 
 ### Work Hours Preservation
 
@@ -317,7 +357,7 @@ The scheduler always ensures that the total mental work time equals the configur
 
 - A mental task will never exceed the configured maximum mental task duration
 - A rest or physical break following a mental task will never be shorter than the calculated minimum
-- Lunch time is fixed and cannot be overridden
+- Fixed anchor times are fixed and cannot be overridden
 - All tasks have a minimum duration of 10 minutes
 
 ---
@@ -329,10 +369,9 @@ The scheduler always ensures that the total mental work time equals the configur
 | **Mental Task** | 🟢 Green | Focused work requiring concentration. Drains the mental battery. |
 | **Physical Break** | 🔴 Red | Active physical activity (e.g. walking, cycling). Charges the mental battery. |
 | **Rest Break** | 🔵 Blue | Quiet rest with minimal activity. Charges the mental battery. |
-| **Lunch** | 🟣 Purple | Fixed lunch period. Does not charge or drain the battery in the same way as work or rest. |
-| **Bike Ride (Before)** | 🔴 Red | Cycling before the working day begins. |
-| **Bike Ride (After)** | 🔴 Red | Cycling after the working day ends. |
-| **Rest (After Lunch)** | 🔵 Blue | Automatic 30-minute rest inserted after every lunch period. |
+| **Fixed Anchor (Draining)** | 🟢 Green | A fixed block that drains energy like mental work, for example a meeting. |
+| **Fixed Anchor (Neutral)** | ⚪ Grey | A fixed block that reserves time without changing energy, for example lunch or travel. |
+| **Fixed Anchor (Restoring)** | 🔵 Blue | A fixed block that restores energy like a break, for example therapy or a planned recovery block. |
 
 ---
 
@@ -350,3 +389,7 @@ To change the language, open Settings → Interface → Language.
 ---
 
 *For questions or support, contact [ddt3@redgrendel.com](mailto:ddt3@redgrendel.com)*
+
+<div class="right-align">
+ErgoTimer version 0.2.0
+</div>

@@ -35,7 +35,7 @@ De app maakt een persoonlijk dagschema dat in balans is tussen:
 - **Mentaal werk** — gerichte taken die concentratie vragen
 - **Lichamelijke activiteit** — beweging waarmee je hoofd kan herstellen
 - **Rustpauzes** — rustige momenten om op te laden
-- **Lunch** — met automatisch ingebouwde rusttijd
+- **Vaste ankers** — niet-verplaatsbare blokken zoals lunch, afspraken of therapie
 
 ## Belangrijkste functies
 
@@ -44,6 +44,7 @@ De app maakt een persoonlijk dagschema dat in balans is tussen:
 - Afteltimer met alarm bij elke taakovergang
 - Mentale batterij-indicator om je energieniveau bij te houden
 - Micropauzeherinneringen tijdens langere mentale taken
+- Vaste ankers voor lunch, afspraken, therapie en andere niet-verplaatsbare blokken
 - Taakduur aanpasbaar terwijl je dag al loopt
 - Notificatiebalk toont huidige taak en resterende tijd
 - Rustige interfacemodus voor een minder drukke ervaring
@@ -54,3 +55,7 @@ De app maakt een persoonlijk dagschema dat in balans is tussen:
 ErgoTimer slaat alles lokaal op je apparaat op. Geen accounts, geen internetverbinding, geen tracking, geen advertenties. Jouw gegevens verlaten nooit je telefoon.
 
 *ErgoTimer — Plan slim. Herstel goed.*
+
+<div class="right-align">
+ErgoTimer versie 0.2.0
+</div>

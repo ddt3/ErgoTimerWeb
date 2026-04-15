@@ -22,8 +22,7 @@ The only data the app stores is your **configuration preferences**, which are sa
 - Maximum duration of a mental task
 - Minimum duration of a physical task
 - Work start time
-- Optional bike ride durations (before and after the working day)
-- Lunch start and end times
+- Fixed anchors, including their names, time ranges, and energy effects
 - Micro-pause reminder interval
 - Alarm sound preference
 - User interface preferences (e.g. interface mode: Standard/Calm/Minimal, language)
@@ -81,3 +80,7 @@ We may update this privacy statement from time to time. Any changes will be publ
 ## 11. Contact
 
 If you have any questions about this privacy statement or how ErgoTimer handles your data, please send an email to [ddt3@redgrendel.com](mailto:ddt3@redgrendel.com).
+
+<div class="right-align">
+ErgoTimer version 0.2.0
+</div>

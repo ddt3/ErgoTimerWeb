@@ -31,6 +31,17 @@ Hier stel je je persoonlijke werkdag in. Je hoeft dit maar één keer te doen �
 
 Doorloop de instellingensecties:
 
+### Mijn dag
+
+Stel de grenzen van je volledige dag in. Deze vier tijdstippen vertellen ErgoTimer wanneer het taken mag plaatsen:
+
+| Instelling | Wat het betekent |
+|---|---|
+| **Wektijd** | Het vroegste punt van je dag — geen taken vóór dit tijdstip |
+| **Bedtijd** | Het einde van je dag — taken lopen nooit verder dan dit tijdstip |
+| **Begin werkvenster** | Wanneer mentaal werk mag beginnen |
+| **Einde werkvenster** | Wanneer mentaal werk moet stoppen |
+
 ### Basisschema
 
 | Instelling | Wat het betekent | Aanbevolen startpunt |
@@ -42,20 +53,29 @@ Doorloop de instellingensecties:
 
 ### Pauzes & herstel
 
-- **Lunchpauze**: Zet dit aan als je een lunchpauze neemt. Stel de begin- en eindtijd van je lunch in. ErgoTimer voegt automatisch een rustperiode van 30 minuten na de lunch toe.
-- **Fietsrit voor het werk**: Als je voor het werk fietst, stel dan hier de duur in. Dit wordt aan het begin van je schema toegevoegd.
-- **Fietsrit na het werk**: Als je na het werk fietst, stel dan hier de duur in. Dit wordt aan het einde van je schema toegevoegd.
+- **Micropauzeherinnering**: Als je zachte herinneringen wilt om een korte pauze te nemen tijdens lange mentale taken, stel dan hier een interval in (bijv. elke 30 minuten).
+
+### Vaste ankers
+
+- **Vaste ankers**: Voeg niet-verplaatsbare blokken toe zoals lunch, afspraken, therapie of geplande hersteltijd. ErgoTimer plaatst nooit automatisch werk binnen deze tijdvensters.
+- **Ankers met vaste tijden** tonen hun begin- en eindtijd in de ankerlijst; **voor-werk- en na-werkingsankers** tonen hun typelabel en duur.
+- Overlappende ankers met vaste tijden kun je vooraf instellen, maar laat conflicterende ankers niet tegelijk ingeschakeld wanneer je een schema genereert.
+- **Uitputtend**: Gebruik dit voor ankers die mentale energie kosten, zoals een vergadering of medisch gesprek.
+- **Neutraal**: Gebruik dit voor ankers die tijd reserveren zonder je energieniveau te veranderen, zoals lunch of reistijd.
+- **Herstellend**: Gebruik dit voor ankers die je helpen opladen, zoals een dutje, therapie-oefening of bewust rustblok.
 
 ### Meldingen
 
 - **Geluidsalarm bij taakeinde**: Zorg dat dit aanstaat zodat je een alarm hoort wanneer een taak eindigt.
 - **Alarmtoon**: Kies welk geluid er afspeelt aan het einde van een taak.
-- **Micropauzeherinnering**: Als je zachte herinneringen wilt om een korte pauze te nemen tijdens lange mentale taken, stel dan hier een interval in (bijv. elke 30 minuten).
 
 ### Interface
 
 - **Taal**: Kies tussen Engels en Nederlands.
-- **Interfacemodus**: Kies tussen **Standaard**, **Rustig** (standaard) en **Minimaal**, afhankelijk van hoeveel details je wilt zien.
+- **Interfacemodus**: Kies tussen **Standaard**, **Rustig** (standaard) en **Minimaal**, afhankelijk van hoeveel details je wilt zien:
+	- **Standaard** toont taaknaam, duur en energiebereik per taak in kalenderblokken.
+	- **Rustig** toont taaknaam en duur in blokken met zachtere styling, en behoudt de batterijbalk in de actieve header.
+	- **Minimaal** toont alleen iconen in kalenderblokken en verbergt de batterijbalk in de actieve header.
 
 ---
 
@@ -69,16 +89,16 @@ ErgoTimer maakt een persoonlijk schema voor de dag, met mentale taken, fysieke p
 
 ## Stap 5: Je schema bekijken
 
-Sluit het instellingenpaneel. Je ziet nu je dag weergegeven in een kleurgecodeerd schema:
+Sluit het instellingenpaneel. Je ziet nu je dag weergegeven als een scrollbare kalendertijdlijn — kleurgecodeerde taakblokken op hun exacte tijden op een verticale tijdas, met een "nu"-lijn die je huidige positie in de dag aangeeft:
 
 | Kleur | Taaktype |
 |---|---|
 | 🟢 Groen | Mentale taak |
 | 🔴 Rood | Fysieke pauze |
 | 🔵 Blauw | Rustpauze |
-| 🟣 Paars | Lunch |
+| 🟢 / ⚪ / 🔵 | Vast anker (uitputtend / neutraal / herstellend) |
 
-Elke rij toont de taaknaam, begintijd, eindtijd en duur. Neem even de tijd om het schema door te nemen. Als iets er niet goed uitziet, ga dan terug naar de instellingen en pas je configuratie aan.
+Elk blok toont de taaknaam, tijdsbereik en duur. Neem even de tijd om door het schema te scrollen. Als iets er niet goed uitziet, ga dan terug naar de instellingen en pas je configuratie aan.
 
 ---
 
@@ -87,7 +107,7 @@ Elke rij toont de taaknaam, begintijd, eindtijd en duur. Neem even de tijd om he
 Wanneer je klaar bent om te beginnen, gebruik je een van de startacties:
 
 - **Nu Inhaken**: spring in op het schema op basis van de huidige tijd (handig als je was vergeten te starten)
-- **Herstart**: start vanaf de eerste taak en verschuif het hele schema naar nu, afgerond naar beneden op 10 minuten
+- **Nu starten**: genereert het volledige schema opnieuw met de huidige tijd als begin van het werkvenster en start onmiddellijk de eerste taak. Dit is alleen beschikbaar binnen 60 minuten na de ingestelde start van je werkvenster.
 
 De gekozen taak begint meteen. Bovenaan het scherm zie je:
 
@@ -111,11 +131,12 @@ Volg het schema terwijl ErgoTimer je door de dag leidt:
 
 ## Stap 8: Aanpassen terwijl je bezig bent
 
-Je kunt taakduren rechtstreeks in de schemalijst aanpassen terwijl de dag loopt:
+Je kunt het schema rechtstreeks in de kalenderweergave aanpassen terwijl de dag loopt:
 
-- Tik op het **bewerkingspictogram** bij een taak om de aanpassingsknoppen zichtbaar te maken
+- Tik op een niet-actief taakblok om het detailvenster met aanpassingsknoppen te openen
 - Gebruik de knoppen **+10 min** en **−10 min** om de taak langer of korter te maken
 - Voor rust- en fysieke pauzes kun je via de wisselknop tussen de twee typen wisselen
+- Als je een lege tussenruimte tussen twee taken ziet, tik dan op die tussenruimte om het dialoogvenster Taak toevoegen te openen met de volledige begin- en eindtijd al ingevuld
 
 Aanpassingen herberekenen automatisch de rest van het schema zodat je totale werkuren bewaard blijven.
 
@@ -132,3 +153,7 @@ Aanpassingen herberekenen automatisch de rest van het schema zodat je totale wer
 ---
 
 *Zodra je instellingen zijn opgeslagen, is het starten van een nieuwe dag zo eenvoudig als de app openen en op **Nu Inhaken** of **Herstart** tikken, afhankelijk van je situatie.*
+
+<div class="right-align">
+ErgoTimer versie 0.2.0
+</div>

@@ -31,6 +31,17 @@ This is where you configure your personal working day. You only need to do this 
 
 Work through the settings sections:
 
+### My Day
+
+Set the boundaries of your full day. These four times tell ErgoTimer when it may place tasks:
+
+| Setting | What it means |
+|---|---|
+| **Wake-up Time** | The earliest point of your day — no tasks before this |
+| **Bedtime** | The end of your day — no tasks extend beyond this |
+| **Work Window Start** | When mental work may begin |
+| **Work Window End** | When mental work must stop |
+
 ### Core Schedule
 
 | Setting | What it means | Recommended starting point |
@@ -42,20 +53,29 @@ Work through the settings sections:
 
 ### Breaks & Recovery
 
-- **Lunch Break**: Toggle this on if you take a lunch break. Set the start and end time of your lunch. ErgoTimer will automatically add a 30-minute rest period after lunch.
-- **Bike Ride Before Work**: If you cycle before starting work, set the duration here. This will be added to the start of your schedule.
-- **Bike Ride After Work**: If you cycle after work, set the duration here. This will be added at the end.
+- **Micro Pause Reminder**: If you want gentle reminders to take a short break during long mental tasks, set an interval here (e.g. every 30 minutes).
+
+### Fixed Anchors
+
+- **Fixed Anchors**: Add non-movable blocks such as lunch, appointments, therapy, or planned recovery time. ErgoTimer will never place generated work inside these time windows.
+- **Fixed-time anchors** show their start and end time in the anchor list; **before-work and after-work anchors** show their type label and duration.
+- Overlapping fixed-time anchors can be pre-configured, but do not keep conflicting anchors enabled at the same time when generating a schedule.
+- **Draining**: Use this for anchors that cost mental energy, such as a meeting or medical intake.
+- **Neutral**: Use this for anchors that should reserve time without changing your energy level, such as lunch or travel.
+- **Restoring**: Use this for anchors that help you recover, such as a nap, therapy exercise, or a guided rest block.
 
 ### Alerts
 
 - **Sound Alarm on Task End**: Make sure this is turned on so you hear an alarm when a task finishes.
 - **Alarm Ringtone**: Choose which sound plays at the end of a task.
-- **Micro Pause Reminder**: If you want gentle reminders to take a short break during long mental tasks, set an interval here (e.g. every 30 minutes).
 
 ### Interface
 
 - **Language**: Choose between English and Dutch.
-- **Interface Mode**: Choose between **Standard**, **Calm** (default), and **Minimal** depending on how much detail you want to see.
+- **Interface Mode**: Choose between **Standard**, **Calm** (default), and **Minimal** based on how much detail you want:
+	- **Standard** shows task name, duration, and per-task energy range in calendar blocks.
+	- **Calm** shows task name and duration in blocks with softer styling, and keeps the active-header battery bar.
+	- **Minimal** shows icon-only calendar blocks and hides the active-header battery bar.
 
 ---
 
@@ -69,16 +89,16 @@ ErgoTimer will create a personalised schedule for the day, with mental tasks, ph
 
 ## Step 5: Review Your Schedule
 
-Close the settings panel. You will now see your day laid out in a colour-coded schedule:
+Close the settings panel. You will now see your day laid out as a scrollable calendar timeline — colour-coded task blocks placed at their exact times on a vertical time axis, with a "now" line showing your current position in the day:
 
 | Colour | Task type |
 |---|---|
 | 🟢 Green | Mental task |
 | 🔴 Red | Physical break |
 | 🔵 Blue | Rest break |
-| 🟣 Purple | Lunch |
+| 🟢 / ⚪ / 🔵 | Fixed anchor (draining / neutral / restoring) |
 
-Each row shows the task name, start time, end time, and duration. Take a moment to look through the schedule. If something doesn't look right, go back to settings and adjust your configuration.
+Each block shows the task name, time range, and duration. Take a moment to scroll through the schedule. If something doesn't look right, go back to settings and adjust your configuration.
 
 ---
 
@@ -87,7 +107,7 @@ Each row shows the task name, start time, end time, and duration. Take a moment 
 When you are ready to begin, use one of the start actions:
 
 - **Catch Up**: jumps into the schedule at the current time (use this if you forgot to start earlier)
-- **Restart**: starts from the first task and shifts the full schedule to now, rounded down to the nearest 10 minutes
+- **Start Now**: regenerates the full schedule using the current time as the work window start and immediately starts the first task. This is only available within 60 minutes of your configured work-window start time.
 
 The selected task will begin immediately. At the top of the screen you will see:
 
@@ -111,11 +131,12 @@ Follow the schedule as ErgoTimer guides you through the day:
 
 ## Step 8: Adjust as You Go
 
-You can adjust task durations directly in the schedule list while the day is running:
+You can adjust the schedule directly in the calendar view while the day is running:
 
-- Tap the **edit icon** on any task to reveal adjustment controls
+- Tap any non-active task block to open its detail sheet with adjustment controls
 - Use the **+10 min** and **−10 min** buttons to make the task longer or shorter
 - For rest and physical breaks, you can switch between the two types using the toggle button
+- If you see an empty gap between two tasks, tap that gap to open the Add Task dialog already filled with the gap's full start and end time
 
 Any adjustments automatically recalculate the rest of the schedule so your total work hours are preserved.
 
@@ -132,3 +153,7 @@ Any adjustments automatically recalculate the rest of the schedule so your total
 ---
 
 *Once your settings are saved, starting a new day is as simple as opening the app and tapping **Catch Up** or **Restart**, depending on your situation.*
+
+<div class="right-align">
+ErgoTimer version 0.2.0
+</div>

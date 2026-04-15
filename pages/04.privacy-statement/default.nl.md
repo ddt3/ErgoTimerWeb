@@ -22,8 +22,7 @@ De enige gegevens die de app opslaat, zijn uw **configuratievoorkeuren**, die lo
 - Maximale duur van een mentale taak
 - Minimale duur van een fysieke taak
 - Begintijd van de werkdag
-- Optionele fietstijden (voor en na de werkdag)
-- Begin- en eindtijd van de lunch
+- Vaste ankers, inclusief naam, tijdsbereik en energie-effect
 - Interval voor micropauzeherinneringen
 - Voorkeur voor alarmgeluid
 - Gebruikersinterface-instellingen (bijv. interfacemodus: Standaard/Rustig/Minimaal, taal)
@@ -81,3 +80,7 @@ Wij kunnen deze privacyverklaring van tijd tot tijd bijwerken. Eventuele wijzigi
 ## 11. Contact
 
 Als u vragen heeft over deze privacyverklaring of over de manier waarop ErgoTimer met uw gegevens omgaat, stuur dan een e-mail naar [ddt3@redgrendel.com](mailto:ddt3@redgrendel.com).
+
+<div class="right-align">
+ErgoTimer versie 0.2.0
+</div>
