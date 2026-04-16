@@ -57,5 +57,5 @@ ErgoTimer slaat alles lokaal op je apparaat op. Geen accounts, geen internetverb
 *ErgoTimer — Plan slim. Herstel goed.*
 
 <div class="right-align">
-ErgoTimer versie 0.2.0
+ErgoTimer versie 0.2.5
 </div>

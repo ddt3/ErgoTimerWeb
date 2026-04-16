@@ -82,5 +82,5 @@ Wij kunnen deze privacyverklaring van tijd tot tijd bijwerken. Eventuele wijzigi
 Als u vragen heeft over deze privacyverklaring of over de manier waarop ErgoTimer met uw gegevens omgaat, stuur dan een e-mail naar [ddt3@redgrendel.com](mailto:ddt3@redgrendel.com).
 
 <div class="right-align">
-ErgoTimer versie 0.2.0
+ErgoTimer versie 0.2.5
 </div>

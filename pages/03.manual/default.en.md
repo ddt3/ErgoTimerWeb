@@ -220,9 +220,11 @@ When a task is running, the current task panel appears at the top of the screen,
 - **Control buttons** — Pause, Stop, and Next
 
 ### Pause / Resume
-Tap **Pause** to pause the countdown timer. The task end time adjusts accordingly. Tap **Resume** to continue the task.
+Tap **Pause** to pause the countdown timer. The task end time adjusts accordingly, and the foreground service is stopped. Tap **Resume** to continue the task, which restarts the foreground service and re-arms the completion alarm.
 
-When the app is paused and moved to the background, the alarm is pre-scheduled so it fires at the correct time even if the app is minimised.
+When the app is paused, the alarm is cancelled so it will not fire while the task is paused. When you resume, the alarm is rescheduled for the new end time.
+
+**Note:** Pausing stops the ongoing countdown notification from appearing in the background. This is intentional — the task is not actively running while paused.
 
 ### Stop
 Tap **Stop** to end the current task immediately without moving to the next one. The schedule remains as-is. Use this if you need to exit the current task flow without advancing.
@@ -283,12 +285,19 @@ The energy range for each task (start % → end %) is shown in the schedule tile
 
 ## 8. Notifications
 
-ErgoTimer uses Android notifications to keep you informed while the app is running in the background.
+ErgoTimer uses Android notifications and a background foreground service to ensure reliable task tracking even when the app is backgrounded or removed from recents.
 
-### Current Task Notification (Persistent)
-A persistent notification is shown in the Android notification bar while a task is active. It displays:
+### Current Task Notification (Persistent / Foreground)
+When a task is active, a persistent notification is shown in the Android notification bar. It displays:
 - The current task name
-- A live countdown timer — implemented using Android's native chronometer, so the displayed time updates continuously and correctly even when the app is in the background, without requiring the app to be running.
+- A live countdown timer — implemented using Android's native chronometer, so the displayed time updates continuously and correctly even when the app is in the background, without requiring app interaction
+
+This notification is backed by a **foreground service** that keeps the app's process alive while a task is running. This is essential for reliable:
+- Schedule progression (advancing to the next task automatically)
+- Alarm rescheduling (re-arming alarms after boundaries are crossed)
+- Recovery after app backgrounding or process restart
+
+**Note:** If an app is removed from Android's recent apps list while in the background, the system may kill the process. The foreground service, combined with persisted session state, allows ErgoTimer to recover and continue the schedule when the process restarts.
 
 ### Task Completion Notification
 When a task's timer reaches zero:
@@ -296,19 +305,40 @@ When a task's timer reaches zero:
 - A notification is shown with the message "Task Complete!"
 - A dialog appears in the app (if the app is in the foreground)
 
-Task completion alarms are scheduled using Android's alarm clock mechanism (`AlarmManager.setAlarmClock()`). This ensures the alarm fires at the exact scheduled time even if the device is in power-saving or Doze mode. A small alarm clock icon (⏰) appears in the Android status bar while a task alarm is pending.
+Task completion alarms are scheduled using Android's alarm clock mechanism (`AlarmManager.setAlarmClock()`). This ensures the alarm fires at the exact scheduled time even if:
+- The device is in power-saving or Doze mode
+- The app is backgrounded
+- The app is removed from recents
+
+A small alarm clock icon (⏰) appears in the Android status bar while a task alarm is pending. The alarm sound is handled reliably by the Android system, independent of whether the Flutter app is running.
+
+**Important:** To ensure alarms fire reliably, exempt ErgoTimer from battery optimization in your Android settings. See the battery optimization exemption instructions in **Getting Started, Step 1**.
 
 ### Next Task Notification (Idle Gap)
-When a task completes and the following task is not scheduled to start until a later time, ErgoTimer enters an idle period and returns to the schedule view with no active task. A background alarm is pre-scheduled for the next task's start time. When that time arrives:
+When a task completes and the following task is not scheduled to start until a later time, ErgoTimer enters an idle period and returns to the schedule view. A background alarm is pre-scheduled for the next task's start time. When that time arrives:
 - If the app is in the foreground, the task starts automatically
 - If the app is in the background, a notification is shown to alert you that your next scheduled task is about to begin
+- The schedule progresses automatically even if you do not open the app
 
 ### Micro-Pause Notification
 If micro-pause reminders are enabled, a notification appears at the configured interval during mental tasks, suggesting a short break. Like task completion alarms, micro-pause reminders also use the alarm clock mechanism for reliable delivery.
 
+### Background Schedule Progression
+Schedule progression is now reliable and continues even when the app is backgrounded or removed from recents. After a task completes:
+1. The task-completion alarm fires at the exact scheduled time (guaranteed by `AlarmManager.setAlarmClock()`)
+2. If the next task starts immediately, it does so automatically without requiring app interaction
+3. If there is an idle gap, the next-task alarm is armed and fires at the correct time
+4. The foreground service is stopped during idle periods and restarted when the next task begins
+
+This is achieved through:
+- **Persistent session state** — saved to the device after every state change
+- **Exact alarm orchestration** — via Android's `AlarmManager` and `AlarmClock` mode
+- **Foreground service** — keeps the process alive while a task is active
+- **Broadcast receivers** — recover and re-arm alarms after reboot, time changes, or timezone changes
+
 ### Notification Channels
 ErgoTimer uses two notification channels:
-- **Current Task** — the persistent task-progress notification
+- **Current Task** — the persistent foreground-service countdown notification
 - **Task Completion Alerts** — alarm notifications and micro-pause reminders
 
 You can manage these channels individually in Android's system notification settings for ErgoTimer.
@@ -391,5 +421,5 @@ To change the language, open Settings → Interface → Language.
 *For questions or support, contact [ddt3@redgrendel.com](mailto:ddt3@redgrendel.com)*
 
 <div class="right-align">
-ErgoTimer version 0.2.0
+ErgoTimer version 0.2.5
 </div>

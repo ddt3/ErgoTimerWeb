@@ -220,9 +220,11 @@ Wanneer een taak wordt uitgevoerd, verschijnt het huidige taakpaneel bovenaan he
 - **Bedieningsknoppen** — Pauzeren, Stoppen en Volgende
 
 ### Pauzeren / Hervatten
-Tik op **Pauzeren** om de afteltimer te pauzeren. De eindtijd van de taak wordt dienovereenkomstig aangepast. Tik op **Hervatten** om de taak voort te zetten.
+Tik op **Pauzeren** om de afteltimer te pauzeren. De eindtijd van de taak wordt dienovereenkomstig aangepast, en de voorgrondservice wordt gestopt. Tik op **Hervatten** om de taak voort te zetten, waarna de voorgrondservice opnieuw wordt gestart en het voltooiingsalarm opnieuw wordt ingesteld.
 
-Wanneer de app is gepauzeerd en naar de achtergrond is verplaatst, wordt het alarm vooraf gepland zodat het op het juiste tijdstip afgaat, ook als de app is geminimaliseerd.
+Wanneer de app is gepauzeerd, wordt het alarm geannuleerd, zodat het niet afgaat terwijl de taak is gepauzeerd. Wanneer je hervatting, wordt het alarm opnieuw ingesteld voor het nieuwe eindtijdstip.
+
+**Opmerking:** Het pauzeren stopt de voortdurende afteltijdmelding op de achtergrond. Dit is opzettelijk — de taak loopt niet actief terwijl deze is gepauzeerd.
 
 ### Stoppen
 Tik op **Stoppen** om de huidige taak onmiddellijk te beëindigen zonder naar de volgende te gaan. Het schema blijft ongewijzigd. Gebruik dit als je de huidige taakstroom wilt verlaten zonder verder te gaan.
@@ -283,12 +285,19 @@ Het energiebereik van elke taak (begin % → einde %) wordt weergegeven in de sc
 
 ## 8. Meldingen
 
-ErgoTimer gebruikt Android-meldingen om je op de hoogte te houden terwijl de app op de achtergrond werkt.
+ErgoTimer gebruikt Android-meldingen en een achtergrondvoorgrondservice om betrouwbare taakvoortgang te garanderen, zelfs wanneer de app op de achtergrond staat of uit recente apps is verwijderd.
 
-### Huidige taakmelding (permanent)
-Een permanente melding wordt weergegeven in de Android-meldingsbalk terwijl een taak actief is. Deze toont:
+### Huidige taakmelding (permanent / voorgrond)
+Wanneer een taak actief is, wordt een permanente melding weergegeven in de Android-meldingsbalk. Deze toont:
 - De naam van de huidige taak
-- Een live afteltimer — geïmplementeerd met Android's ingebouwde chronometer, zodat de weergegeven tijd continu en correct wordt bijgewerkt, ook wanneer de app op de achtergrond staat, zonder dat de app actief hoeft te zijn.
+- Een live afteltimer — geïmplementeerd met Android's ingebouwde chronometer, zodat de weergegeven tijd continu en correct wordt bijgewerkt, ook wanneer de app op de achtergrond staat
+
+Deze melding wordt ondersteund door een **voorgrondservice** die het appproces actief houdt zolang een taak loopt. Dit is essentieel voor betrouwbare:
+- Schemavoortgang (automatisch overstappen naar de volgende taak)
+- Heralarmering (alarmen opnieuw activeren na taakgrenzen)
+- Herstel na app-backgrounding of procesherstart
+
+**Opmerking:** Als een app uit de recente apps van Android wordt verwijderd terwijl deze op de achtergrond staat, kan het systeem het proces beëindigen. De voorgrondservice, in combinatie met opgeslagen sessiegegevens, stelt ErgoTimer in staat om te herstellen en het schema voort te zetten wanneer het proces opnieuw start.
 
 ### Taakvoltooidingsmelding
 Wanneer de timer van een taak nul bereikt:
@@ -296,19 +305,40 @@ Wanneer de timer van een taak nul bereikt:
 - Wordt er een melding weergegeven met "Taak voltooid!"
 - Verschijnt er een dialoogvenster in de app (als de app op de voorgrond is)
 
-Taakvoltooiingsalarmen worden gepland via Android's wekker-mechanisme (`AlarmManager.setAlarmClock()`). Dit zorgt ervoor dat het alarm op exact het geplande tijdstip afgaat, zelfs als het apparaat in energiebesparingsmodus of Doze-modus staat. Een klein wekker-pictogram (⏰) verschijnt in de Android-statusbalk zolang er een alarm gepland staat.
+Taakvoltooiingsalarmen worden gepland via Android's wekker-mechanisme (`AlarmManager.setAlarmClock()`). Dit zorgt ervoor dat het alarm op exact het geplande tijdstip afgaat, zelfs als:
+- Het apparaat in energiebesparingsmodus of Doze-modus staat
+- De app op de achtergrond staat
+- De app uit recente apps is verwijderd
+
+Een klein wekker-pictogram (⏰) verschijnt in de Android-statusbalk zolang er een alarm gepland staat. Het alarmgeluid wordt door het Android-systeem betrouwbaar afgehandeld, onafhankelijk van of de Flutter-app wordt uitgevoerd.
+
+**Belangrijk:** Om ervoor te zorgen dat alarmen betrouwbaar afgaan, sluit ErgoTimer uit van batterijoptimalisatie in je Android-instellingen. Zie de instructies voor batterijoptimalisatie-uitsluiting in **Aan de slag, Stap 1**.
 
 ### Melding volgende taak (rustige periode)
-Wanneer een taak voltooid is maar de volgende taak pas later gepland staat, gaat ErgoTimer in een rustige tussenpauze en keert terug naar het schemaoverzicht zonder actieve taak. Er wordt alvast een achtergrondwekker gepland voor de starttijd van de volgende taak. Wanneer dat moment aanbreekt:
+Wanneer een taak voltooid is maar de volgende taak pas later gepland staat, gaat ErgoTimer in een rustige tussenpauze en keert terug naar het schemaoverzicht. Er wordt alvast een achtergrondwekker gepland voor de starttijd van de volgende taak. Wanneer dat moment aanbreekt:
 - Als de app op de voorgrond is, start de taak automatisch
 - Als de app op de achtergrond is, wordt er een melding weergegeven om je te laten weten dat je volgende geplande taak op het punt staat te beginnen
+- Het schema wordt automatisch voortgezet, zelfs als je de app niet opent
 
 ### Micropauzemelding
 Als micropauzeherinneringen zijn ingeschakeld, verschijnt er op het geconfigureerde interval een melding tijdens mentale taken, die aanmoedigt tot een korte pauze. Net als taakvoltooiingsalarmen maken micropauzeherinneringen gebruik van het wekker-mechanisme voor betrouwbare bezorging.
 
+### Achtergrondschemavoortgang
+Schemavoortgang is nu betrouwbaar en wordt voortgezet, zelfs wanneer de app op de achtergrond staat of uit recente apps is verwijderd. Na voltooiing van een taak:
+1. Het taakvoltooidingsalarm gaat af op het exacte geplande moment (gegarandeerd door `AlarmManager.setAlarmClock()`)
+2. Als de volgende taak onmiddellijk begint, doet deze dit automatisch zonder app-interactie nodig
+3. Als er een rustige periode is, wordt het alarm voor de volgende taak ingesteld en gaat af op het juiste moment
+4. De voorgrondservice stopt tijdens rustige periodes en wordt opnieuw gestart wanneer de volgende taak begint
+
+Dit wordt bereikt door:
+- **Permanente sessiegegevens** — opgeslagen op het apparaat na elke statuswijziging
+- **Exacte alarmorkestratie** — via Android's `AlarmManager` en `AlarmClock` modus
+- **Voorgrondservice** — houdt het proces actief zolang een taak actief is
+- **Broadcastervers** — herstellen en re-activeren alarmen na herstart, tijdwijzigingen of timezonewijzigingen
+
 ### Meldingskanalen
 ErgoTimer gebruikt twee meldingskanalen:
-- **Huidige taak** — de permanente taakvoortgangsmelding
+- **Huidige taak** — de permanente voorgrondservice-afteltijdmelding
 - **Taakvoltooiingswaarschuwingen** — alarmmelding en micropauzeherinneringen
 
 Je kunt deze kanalen afzonderlijk beheren in de systeemmeldingsinstellingen van Android voor ErgoTimer.
@@ -391,5 +421,5 @@ Om de taal te wijzigen, ga naar Instellingen → Interface → Taal.
 *Voor vragen of ondersteuning, neem contact op via [ddt3@redgrendel.com](mailto:ddt3@redgrendel.com)*
 
 <div class="right-align">
-ErgoTimer versie 0.2.0
+ErgoTimer versie 0.2.5
 </div>

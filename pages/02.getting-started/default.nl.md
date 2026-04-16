@@ -14,8 +14,20 @@ Download en installeer ErgoTimer vanuit de Google Play Store. Wanneer je de app 
 
 - **Meldingen** — vereist om de huidige taak en resterende tijd in je meldingsbalk weer te geven
 - **Exacte alarmen inplannen** — vereist om taakalarms op het juiste moment te laten afgaan
+- **Voorgrondservice** — vereist om de app actief op de achtergrond te houden, zodat taakalarms en schemavoortgang betrouwbaar werken als de app op de achtergrond staat
 
 Tik op **Toestaan** wanneer dit wordt gevraagd. Deze machtigingen zijn noodzakelijk voor een correcte werking van de app.
+
+### Batterijoptimalisatie uitsluiten (Belangrijk)
+
+Voor betrouwbare achtergrondmeldingen en schemavoortgang moet je **ErgoTimer uitsluiten van energiebesparing** in je Android-instellingen:
+
+1. Ga naar **Instellingen** → **Batterij** (of **Energiebeheer**)
+2. Zoek **Batterijoptimalisatie** (of **Energiespaarstand / Batterijmodus**)
+3. Selecteer **ErgoTimer** uit de lijst van apps
+4. Tik op **Niet optimaliseren** (of **Uitsluiten van optimalisatie**)
+
+Dit zorgt ervoor dat taakalarms op het exacte geplande moment afgaan en het schema blijft voortschrijden, zelfs als het apparaat in de spaarmodus is.
 
 ---
 
@@ -155,5 +167,5 @@ Aanpassingen herberekenen automatisch de rest van het schema zodat je totale wer
 *Zodra je instellingen zijn opgeslagen, is het starten van een nieuwe dag zo eenvoudig als de app openen en op **Nu Inhaken** of **Herstart** tikken, afhankelijk van je situatie.*
 
 <div class="right-align">
-ErgoTimer versie 0.2.0
+ErgoTimer versie 0.2.5
 </div>

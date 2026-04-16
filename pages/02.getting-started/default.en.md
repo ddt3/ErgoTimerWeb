@@ -14,8 +14,20 @@ Download and install ErgoTimer from the Google Play Store. When you open the app
 
 - **Notifications** — required to display the current task and remaining time in your notification bar
 - **Schedule Exact Alarm** — required to trigger task-completion alarms at the right time
+- **Foreground Service** — required to keep the app active in the background so task-completion alarms and schedule progression work reliably while the app is backgrounded
 
 Tap **Allow** when prompted. These permissions are necessary for the app to work correctly.
+
+### Battery Optimization Exemption (Important)
+
+For reliable background notifications and schedule progression, **exempt ErgoTimer from battery optimization** in your Android settings:
+
+1. Go to **Settings** → **Battery** (or **Power Management**)
+2. Find **Battery Optimization** (or **Battery Saver / Battery Mode**)
+3. Select **ErgoTimer** from the list of apps
+4. Tap **Don't optimize** (or **Exempt from optimization**)
+
+This ensures that task-completion alarms fire at the exact scheduled time and the schedule continues to advance even when the device is in low-power mode.
 
 ---
 
@@ -155,5 +167,5 @@ Any adjustments automatically recalculate the rest of the schedule so your total
 *Once your settings are saved, starting a new day is as simple as opening the app and tapping **Catch Up** or **Restart**, depending on your situation.*
 
 <div class="right-align">
-ErgoTimer version 0.2.0
+ErgoTimer version 0.2.5
 </div>

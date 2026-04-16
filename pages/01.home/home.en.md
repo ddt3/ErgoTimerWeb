@@ -57,5 +57,5 @@ ErgoTimer stores everything locally on your device. No accounts, no internet con
 *ErgoTimer — Schedule smart. Recover well.*
 
 <div class="right-align">
-ErgoTimer version 0.2.0
+ErgoTimer version 0.2.5
 </div>
