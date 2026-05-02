@@ -100,7 +100,36 @@
                 {% include 'partials/logo.html.twig' with {mobile: true} %}
             </div>
             <div class="mobile-language-selector">
-                {% include 'partials/language-selector.html.twig' %}
+                {% if language_selector is defined and language_selector.languages|length > 1 %}
+                <ul class="mobile-language-list">
+                {% for language in language_selector.languages %}
+                    {% set show_language = true %}
+                    {% if language == language_selector.current %}
+                        {% set lang_url = page.url %}
+                    {% else %}
+                        {% set base_lang_url = base_url_simple ~ grav.language.getLanguageURLPrefix(language) %}
+                        {% set lang_url = base_lang_url ~ language_selector.page_route ~ page.urlExtension %}
+                        {% set untranslated_pages_behavior = grav.config.plugins.language_selector.untranslated_pages_behavior %}
+                        {% if untranslated_pages_behavior != 'none' %}
+                            {% set translated_page = language_selector.translated_pages[language] %}
+                            {% if (not translated_page) or (not translated_page.published) %}
+                                {% if untranslated_pages_behavior == 'redirect' %}
+                                    {% set lang_url = base_lang_url ~ '/' %}
+                                {% elseif untranslated_pages_behavior == 'hide' %}
+                                    {% set show_language = false %}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+
+                    {% if show_language %}
+                    <li>
+                        <a href="{{ lang_url ~ uri.params }}"{% if language == language_selector.current %} class="active"{% endif %}>{{ native_name(language)|capitalize }}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+                {% endif %}
             </div>
             <nav class="overlay-menu">
                 {% include 'partials/navigation.html.twig' with {tree: true} %}
