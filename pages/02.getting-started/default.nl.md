@@ -66,20 +66,24 @@ Stel de grenzen van je volledige dag in. Deze vier tijdstippen vertellen ErgoTim
 ### Pauzes & herstel
 
 - **Micropauzeherinnering**: Als je zachte herinneringen wilt om een korte pauze te nemen tijdens lange mentale taken, stel dan hier een interval in (bijv. elke 30 minuten).
+- **Ademruimte**: Dit is de overgangstijd die ErgoTimer tussen gegenereerde taken bewaart. Een grotere waarde geeft rustigere overgangen; een kleinere waarde laat meer ruimte voor werkblokken.
 
 ### Vaste ankers
 
 - **Vaste ankers**: Voeg niet-verplaatsbare blokken toe zoals lunch, afspraken, therapie of geplande hersteltijd. ErgoTimer plaatst nooit automatisch werk binnen deze tijdvensters.
 - **Ankers met vaste tijden** tonen hun begin- en eindtijd in de ankerlijst; **voor-werk- en na-werkingsankers** tonen hun typelabel en duur.
+- **Telt mee voor het werkdoel**: Elk anker heeft een schakelaar die bepaalt of de duur meetelt voor je dagelijkse werkdoel. Ankers met vaste tijden staan standaard aan; voor-werk- en na-werkankers standaard uit. Schakel dit uit voor afspraken of andere niet-werkverplichtingen die wel tijd moeten blokkeren.
 - Overlappende ankers met vaste tijden kun je vooraf instellen, maar laat conflicterende ankers niet tegelijk ingeschakeld wanneer je een schema genereert.
 - **Uitputtend**: Gebruik dit voor ankers die mentale energie kosten, zoals een vergadering of medisch gesprek.
 - **Neutraal**: Gebruik dit voor ankers die tijd reserveren zonder je energieniveau te veranderen, zoals lunch of reistijd.
 - **Herstellend**: Gebruik dit voor ankers die je helpen opladen, zoals een dutje, therapie-oefening of bewust rustblok.
+- Voor uitputtende ankers binnen je werkvenster moet de ankerduur kleiner dan of gelijk aan je instelling **Maximale duur mentale taak** blijven.
 
 ### Meldingen
 
 - **Geluidsalarm bij taakeinde**: Zorg dat dit aanstaat zodat je een alarm hoort wanneer een taak eindigt.
-- **Alarmtoon**: Kies welk geluid er afspeelt aan het einde van een taak.
+- **Taakmeldingsgeluid**: Kies welk geluid er afspeelt aan het einde van een taak. Gebruik het afspeelpictogram naast de keuze om een voorbeeld te horen.
+- **Micropauzeherinneringsgeluid**: Kies een geluid voor micropauzeherinneringen. Je kunt kiezen uit **Standaardgeluid**, een specifiek micropauzegeluid of **Geen geluid**.
 
 ### Interface
 
@@ -96,6 +100,8 @@ Stel de grenzen van je volledige dag in. Deze vier tijdstippen vertellen ErgoTim
 Nadat je je instellingen hebt ingevoerd, tik je op de knop **Schema genereren** onderaan het instellingenpaneel.
 
 ErgoTimer maakt een persoonlijk schema voor de dag, met mentale taken, fysieke pauzes en rustmomenten die automatisch in balans worden gebracht op basis van jouw instellingen.
+
+Als je huidige instellingen geen veilig schema kunnen opleveren (bijvoorbeeld door conflicterende ankers, een uitputtend anker dat langer is dan je maximale mentale duur, of te weinig beschikbare tijd), toont ErgoTimer een duidelijke validatiemelding zodat je je instellingen kunt aanpassen en opnieuw proberen.
 
 ---
 
@@ -148,7 +154,7 @@ Je kunt het schema rechtstreeks in de kalenderweergave aanpassen terwijl de dag 
 - Tik op een niet-actief taakblok om het detailvenster met aanpassingsknoppen te openen
 - Gebruik de knoppen **+10 min** en **−10 min** om de taak langer of korter te maken
 - Voor rust- en fysieke pauzes kun je via de wisselknop tussen de twee typen wisselen
-- Als je een lege tussenruimte tussen twee taken ziet, tik dan op die tussenruimte om het dialoogvenster Taak toevoegen te openen met de volledige begin- en eindtijd al ingevuld
+- Als je een lege tussenruimte tussen twee taken ziet die groter is dan je ingestelde ademruimte, tik dan op die tussenruimte om het dialoogvenster Anker toevoegen te openen (hetzelfde als in de instellingen), met de volledige begin- en eindtijd al ingevuld
 
 Aanpassingen herberekenen automatisch de rest van het schema zodat je totale werkuren bewaard blijven.
 
@@ -167,5 +173,5 @@ Aanpassingen herberekenen automatisch de rest van het schema zodat je totale wer
 *Zodra je instellingen zijn opgeslagen, is het starten van een nieuwe dag zo eenvoudig als de app openen en op **Nu Inhaken** of **Herstart** tikken, afhankelijk van je situatie.*
 
 <div class="right-align">
-ErgoTimer versie 0.2.5
+ErgoTimer versie 0.2.9
 </div>

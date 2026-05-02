@@ -12,9 +12,7 @@ title: Handleiding
    - 3.0 [Mijn dag](#30-mijn-dag)
    - 3.1 [Basisschema](#31-basisschema)
    - 3.2 [Pauzes & herstel](#32-pauzes--herstel)
-   - 3.3 [Meldingen](#33-meldingen)
-   - 3.4 [Interface](#34-interface)
-   - 3.5 [Geavanceerd](#35-geavanceerd)
+   - 3.3 [Interface](#33-interface)
 4. [Schemaweergave](#4-schemaweergave)
 5. [Bediening actieve taak](#5-bediening-actieve-taak)
 6. [Het schema aanpassen](#6-het-schema-aanpassen)
@@ -51,7 +49,7 @@ Wanneer er nog geen schema is gegenereerd, toont het scherm:
 ### Na het genereren van een schema
 
 Zodra een schema is gegenereerd, toont het scherm de volledige dag als een scrollbare kalendertijdlijn. Onderaan verschijnen actieknoppen:
-- **Taak toevoegen** — voeg handmatig een taak toe aan je schema
+- **Taak toevoegen** — opent hetzelfde ankervenster als in de instellingen, zodat je direct vanuit het schema een vast anker toevoegt
 - **Nu Inhaken** — spring in op het huidige punt van het bestaande schema op basis van de huidige tijd
 - **Nu starten** — genereert het volledige schema opnieuw met de huidige tijd als begin van het werkvenster en start onmiddellijk de eerste taak. Alleen beschikbaar binnen 60 minuten na de geconfigureerde begintijd van het werkvenster.
 
@@ -85,13 +83,15 @@ De uiterste tijd waarop werk mag eindigen. Geen gegenereerde mentale taak loopt 
 **Bereik:** 1 uur tot 9 uur, in stappen van 0,5 uur  
 **Standaard:** 4 uur
 
-Het totale aantal uren mentaal werk dat in de dag wordt ingepland. Fysieke pauzes, rustmomenten en vaste ankers tellen niet mee — alleen mentale taken.
+Het totale aantal uren mentaal werk dat in de dag wordt ingepland. Fysieke pauzes en rustmomenten tellen nooit mee. Vaste ankers tellen alleen mee wanneer voor dat anker de schakelaar **Telt mee voor het werkdoel** is ingeschakeld.
 
 #### Maximale duur mentale taak
 **Bereik:** 30 minuten tot 180 minuten (3 uur), in stappen van 30 minuten  
 **Standaard:** 120 minuten (2 uur)
 
 De maximale aaneengesloten duur van één mentale taak. Wanneer een mentale taak deze limiet bereikt, zal de planner altijd een pauze invoegen voor verdere mentale arbeid wordt toegestaan. Dit is een harde limiet — geen enkele mentale taak in het gegenereerde schema zal deze waarde overschrijden.
+
+Voor uitputtende vaste ankers binnen het werkvenster geldt dezelfde limiet. Als een uitputtend anker langer is dan je ingestelde maximale mentale taakduur, wordt het genereren van een schema geblokkeerd met een duidelijke melding zodat je dat anker kunt verkorten of de maximale mentale duur kunt verhogen.
 
 #### Minimale duur fysieke taak
 **Bereik:** 5 minuten tot 60 minuten, in stappen van 5 minuten  
@@ -106,6 +106,11 @@ De tijd waarop je werkdag begint. Stel het uur en de minuut in met de tijdkiezer
 
 ### 3.2 Pauzes & herstel
 
+Tussen automatisch gegenereerde onderdelen bewaart ErgoTimer overgangsruimte aan beide kanten van een gegenereerde pauze. In de praktijk is het patroon dus: gegenereerde mentale taak, ademruimte, gegenereerde pauze, ademruimte, volgende gegenereerde mentale taak.
+
+#### Ademruimte
+Ademruimte is de overgangstijd die ErgoTimer tussen gegenereerde taken bewaart. Als de dag erg krap is, kan ErgoTimer deze ruimte op specifieke plekken iets verkorten om vaste ankers en verplichte werktijd haalbaar te houden, terwijl de ingestelde planningsgrenzen behouden blijven.
+
 #### Vaste ankers
 
 Vaste ankers zijn niet-verplaatsbare blokken in het schema voor lunch, vergaderingen, afspraken, therapie, reistijd of geplande hersteltijd. Elk anker heeft:
@@ -113,6 +118,7 @@ Vaste ankers zijn niet-verplaatsbare blokken in het schema voor lunch, vergaderi
 - **Naam** — wordt direct in het schema getoond
 - **Ankertype** — bepaalt wanneer het anker in het schema wordt geplaatst
 - **Energie-effect** — hoe het anker de mentale batterij beïnvloedt
+- **Telt mee voor het werkdoel** — bepaalt of de duur van het anker het resterende gegenereerde werk verlaagt
 
 Ankertypes:
 
@@ -126,6 +132,13 @@ Energie-effecten:
 - **Neutraal** — reserveert tijd zonder de batterij te veranderen
 - **Herstellend** — werkt voor de batterij als een herstellende pauze
 
+Standaardinstellingen voor werkdoel:
+
+- Ankers met **vaste tijd** tellen standaard mee voor het werkdoel
+- **Voor werk**-ankers tellen standaard niet mee voor het werkdoel
+- **Na werk**-ankers tellen standaard niet mee voor het werkdoel
+- Je kunt dit per anker overschrijven in het ankerdialoogvenster zonder het batterij-effect te veranderen
+
 De planner plaatst nooit automatisch werk binnen een vast anker. In plaats daarvan vult hij de vrije periodes voor, tussen en na de ankers.
 
 In de instellingen gebruikt elke ankerkaart een compacte lay-out met twee rijen: de eerste rij toont het ankerpictogram, de naam en metadata; de tweede rij bevat de schakelaar en de knoppen voor bewerken/verwijderen.
@@ -138,25 +151,7 @@ Gedrag bij overlap van ankers met vaste tijden:
 
 ---
 
-### 3.3 Meldingen
-
-#### Geluidsalarm bij taakeinde
-**Standaard:** Aan
-
-Wanneer ingeschakeld, speelt er een hoorbaar alarm wanneer de afteltimer van een taak nul bereikt. Wanneer uitgeschakeld, eindigt de taak geruisloos (er wordt nog steeds een melding getoond).
-
-#### Alarmtoon
-Selecteer welk geluid er afspeelt wanneer een taak eindigt. Tik op de keuzelijst om te kiezen uit de beschikbare opties. Gebruik de knop **Geluid testen** om een voorbeeld te horen van het geselecteerde geluid.
-
-#### Micropauzeherinnering
-**Bereik:** Uit, 5 tot 60 minuten in stappen van 5 minuten  
-**Standaard:** Uit
-
-Wanneer ingeschakeld, verschijnt tijdens mentale taken op het opgegeven interval een herinneringsmelding. Als dit bijvoorbeeld op 30 minuten is ingesteld, verschijnt er 30 minuten nadat een mentale taak is begonnen een herinnering die aanmoedigt tot een korte pauze (zoals het zetten van koffie). Micropauzes zijn geen aparte geplande taken — het zijn herinneringen binnen de huidige taak.
-
----
-
-### 3.4 Interface
+### 3.3 Interface
 
 #### Taal
 Kies tussen **Engels** en **Nederlands**. De app toont alle tekst in de geselecteerde taal.
@@ -169,9 +164,27 @@ ErgoTimer biedt drie interfacemodi:
 - **Rustig** — taakblokken tonen taaknaam en duur met zachtere visuele styling; het energiebereik per taak wordt in blokken verborgen. In de header van de actieve taak blijft de live batterij-percentagebalk zichtbaar.
 - **Minimaal** — taakblokken zijn alleen iconen en in de header van de actieve taak wordt de batterij-percentagebalk verborgen.
 
+#### Meldingen
+
+##### Taakmelding geluid
+Selecteer welk geluid er afspeelt wanneer een taak eindigt. Tik op de keuzelijst om te kiezen uit de beschikbare opties:
+- **Geen** (stil — de taak eindigt zonder hoorbaar alarm)
+- **Systeemstandaard** (gebruikt het standaard meldingsgeluid van je telefoon)
+- Een specifiek taakeindgeluid
+
+Gebruik het afspeelpictogram naast de keuze om het huidige taakgeluid te beluisteren (uitgeschakeld bij **Geen**).
+
+##### Micropauzeherinneringsgeluid
+Kies welk geluid er afspeelt bij micropauzeherinneringen. Je kunt kiezen uit:
+- **Geen** (stille herinnering)
+- **Systeemstandaard** (gebruikt het standaard meldingsgeluid van je telefoon)
+- Een specifiek micropauzegeluid
+
+Gebruik het afspeelpictogram naast de keuze om het geselecteerde micropauzegeluid te beluisteren (uitgeschakeld bij **Geen**).
+
 ---
 
-### 3.5 Geavanceerd
+### 3.4 Geavanceerd
 
 #### Foutopsporingsmodus (snelle timers)
 **Standaard:** Uit
@@ -184,7 +197,7 @@ Wanneer ingeschakeld, wordt de tijd versneld: 1 uur wordt behandeld als 1 minuut
 
 Het schema wordt weergegeven als een scrollbare verticale tijdlijn (kalenderweergave). Een tijdas aan de linkerkant toont kloktijden; kleurgecodeerde taakblokken worden op hun exacte positie op de as geplaatst. Een horizontale "nu"-lijn beweegt door de tijdlijn naarmate de tijd verstrijkt, zodat je altijd in één oogopslag kunt zien waar je in je dag staat.
 
-Als er een lege tussenruimte bestaat tussen twee geplande taken, toont ErgoTimer op die plaats een subtiele aanklikbare tussenregel. Door op de tussenruimte te tikken open je het dialoogvenster Taak toevoegen, vooraf ingevuld met de volledige begin- en eindtijd van die vrije periode.
+Als er een lege tussenruimte bestaat tussen twee geplande taken die groter is dan de ingestelde ademruimte, toont ErgoTimer op die plaats een subtiele aanklikbare tussenregel. Door op de tussenruimte te tikken open je hetzelfde ankerdialoogvenster als in de instellingen, vooraf ingevuld met begin- en eindtijd van die vrije periode zodat je daar een anker met vaste tijd kunt maken. Tussenruimtes die alleen even lang zijn als de ademruimte blijven visueel rustig en tonen geen tekst om een taak toe te voegen.
 
 ### Taakblokindeling
 
@@ -241,7 +254,7 @@ Je kunt individuele taken in het schema aanpassen terwijl de dag loopt (of voor 
 Tik op een taakblok om het detailvenster met beschikbare acties te openen.
 
 ### Een taak toevoegen in een lege tussenruimte
-Als er zichtbare vrije tijd tussen twee taken staat, tik je op de tussenregel om het tijdsgebonden dialoogvenster Taak toevoegen te openen. Het dialoogvenster is vooraf ingevuld met de volledige grenzen van die tussenruimte. Daarna geeft ErgoTimer de taak direct door aan de planner, die indien nodig zelf een veiligheidsrust invoegt of een grote mentale taak opsplitst in meerdere mentale blokken en pauzes.
+Als er zichtbare vrije tijd tussen twee taken staat die groter is dan de ingestelde ademruimte, tik je op de tussenregel om het dialoogvenster Anker toevoegen te openen. Dit is hetzelfde dialoogvenster als in Instellingen en het is vooraf ingevuld met de begin- en eindtijd van die tussenruimte. Na opslaan genereert ErgoTimer het schema opnieuw met de bijgewerkte ankerlijst en past het automatisch Nu Inhaken toe als je dag al loopt, zodat de planning op de huidige tijd blijft aansluiten. Als het nieuwe anker de configuratie ongeldig maakt, toont ErgoTimer een validatiemelding en blijft het vorige schema behouden. Tussenruimtes ter grootte van alleen de ademruimte blijven bewust rustig in de interface zodat ze niet als opvulbare werkvakken worden gepresenteerd.
 
 ### Taakduur verlengen (+10 min)
 Tik op **+10 min** om 10 minuten aan een taak toe te voegen. Voor mentale taken mag de duur de geconfigureerde maximale mentale taaktijd niet overschrijden. Voor rust- en fysieke pauzes kan de duur vrij worden verlengd.
@@ -305,6 +318,8 @@ Wanneer de timer van een taak nul bereikt:
 - Wordt er een melding weergegeven met "Taak voltooid!"
 - Verschijnt er een dialoogvenster in de app (als de app op de voorgrond is)
 
+Als de app open is, verwerkt ErgoTimer de taakwissel direct in de app. Als de app op de achtergrond staat, verwerkt Android het geplande alarm. Je hoort hetzelfde taakeindegeluid dus niet twee keer.
+
 Taakvoltooiingsalarmen worden gepland via Android's wekker-mechanisme (`AlarmManager.setAlarmClock()`). Dit zorgt ervoor dat het alarm op exact het geplande tijdstip afgaat, zelfs als:
 - Het apparaat in energiebesparingsmodus of Doze-modus staat
 - De app op de achtergrond staat
@@ -337,9 +352,10 @@ Dit wordt bereikt door:
 - **Broadcastervers** — herstellen en re-activeren alarmen na herstart, tijdwijzigingen of timezonewijzigingen
 
 ### Meldingskanalen
-ErgoTimer gebruikt twee meldingskanalen:
+ErgoTimer gebruikt drie meldingskanalen:
 - **Huidige taak** — de permanente voorgrondservice-afteltijdmelding
-- **Taakvoltooiingswaarschuwingen** — alarmmelding en micropauzeherinneringen
+- **Taakvoltooiingswaarschuwingen** — alarmen bij taakeinde
+- **Micropauzeherinneringen** — meldingen voor micropauzes
 
 Je kunt deze kanalen afzonderlijk beheren in de systeemmeldingsinstellingen van Android voor ErgoTimer.
 
@@ -351,19 +367,23 @@ Je kunt deze kanalen afzonderlijk beheren in de systeemmeldingsinstellingen van 
 
 Wanneer je op **Schema genereren** tikt, bouwt ErgoTimer een volledig dagschema als volgt:
 
-1. **Vaste ankers** worden op starttijd gesorteerd
-2. **Mentale taken** worden gegenereerd in de beschikbare vrije periodes, elk tot de maximale mentale taakduur
-3. **Pauzes** worden ingevoegd tussen mentale blokken wanneer dat nodig is
-4. **Vaste-tijdankers** worden ongewijzigd ingevoegd op hun geconfigureerde tijden
-5. **Resterend werk** gaat door in latere vrije periodes tot het totale werkdoel is bereikt
-6. **Na-werk-ankers** worden direct na het laatste gegenereerde werktaak geplaatst, ongeacht eventuele vaste-tijdankers die later op de dag gepland staan
+1. ErgoTimer voert eerst haalbaarheidscontroles uit; als je instellingen geen veilig schema toelaten, wordt genereren geblokkeerd met een duidelijke foutmelding
+2. **Vaste ankers** worden op starttijd gesorteerd
+3. **Mentale taken** worden gegenereerd in de beschikbare vrije periodes, elk tot de maximale mentale taakduur
+4. **Pauzes** worden ingevoegd tussen mentale blokken wanneer dat nodig is
+5. **Vaste-tijdankers** worden ongewijzigd ingevoegd op hun geconfigureerde tijden
+6. **Resterend werk** gaat door in latere vrije periodes tot het totale werkdoel is bereikt, nadat ankers die meetellen voor werk zijn afgetrokken
+7. **Na-werk-ankers** worden direct na het laatste gegenereerde werktaak geplaatst, ongeacht eventuele vaste-tijdankers die later op de dag gepland staan
+8. Als er die dag geen gegenereerde werktaak bestaat, worden **na-werk-ankers** niet geplaatst; ze blijven ingeschakeld in de instellingen en ErgoTimer geeft in plaats daarvan een waarschuwing
+
+Ankers die heel dicht op elkaar staan, behandelt ErgoTimer als een blok. In die gevallen worden er geen gegenereerde taken tussen die ankers geplaatst.
 
 ### Berekening van de rustduur
 
-De minimale rusttijd na een mentale taak wordt proportioneel berekend:
+De minimale rusttijd na een mentale taak wordt berekend op basis van de batterijdaling sinds de laatste herstellende pauze:
 
 ```
-min_rust = (duur_mentale_taak / max_mentale_duur) × min_fysieke_duur
+min_rust = (batterij_bij_start_cyclus − batterij_na_mentale_taak) × min_fysieke_duur
 ```
 
 Deze waarde wordt altijd naar boven afgerond op het dichtstbijzijnde veelvoud van 10 minuten.
@@ -371,6 +391,8 @@ Deze waarde wordt altijd naar boven afgerond op het dichtstbijzijnde veelvoud va
 **Voorbeeld:**  
 Maximale mentale duur = 120 min, Minimale fysieke duur = 30 min, Mentale taak = 60 min  
 → min_rust = (60 / 120) × 30 = 15 min → afgerond naar boven = 20 min
+
+Als een uitputtend anker je batterij al had verlaagd vóór die mentale taak, wordt die extra daling meegenomen in de rustberekening. Zo voorkom je te korte pauzes na anker-zware blokken.
 
 ### Ankerbewust plannen
 
@@ -421,5 +443,5 @@ Om de taal te wijzigen, ga naar Instellingen → Interface → Taal.
 *Voor vragen of ondersteuning, neem contact op via [ddt3@redgrendel.com](mailto:ddt3@redgrendel.com)*
 
 <div class="right-align">
-ErgoTimer versie 0.2.5
+ErgoTimer versie 0.2.9
 </div>

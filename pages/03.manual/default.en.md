@@ -12,9 +12,7 @@ title: Manual
    - 3.0 [My Day](#30-my-day)
    - 3.1 [Core Schedule](#31-core-schedule)
    - 3.2 [Breaks & Recovery](#32-breaks--recovery)
-   - 3.3 [Alerts](#33-alerts)
-   - 3.4 [Interface](#34-interface)
-   - 3.5 [Advanced](#35-advanced)
+   - 3.3 [Interface](#33-interface)
 4. [Schedule View](#4-schedule-view)
 5. [Active Task Controls](#5-active-task-controls)
 6. [Adjusting the Schedule](#6-adjusting-the-schedule)
@@ -51,7 +49,7 @@ When no schedule has been generated yet, the screen shows:
 ### After generating a schedule
 
 Once a schedule is generated, the screen shows the full day as a scrollable calendar timeline. Action buttons appear at the bottom:
-- **Add Task** — insert a manual task into your schedule
+- **Add Task** — opens the same anchor dialog used in settings, so you add a fixed anchor directly from the schedule
 - **Catch Up** — jumps into the current point in the existing schedule based on the current time
 - **Start Now** — regenerates the full schedule using the current time as the work window start, then immediately starts the first task. Only available within 60 minutes of the configured work window start time.
 
@@ -85,13 +83,15 @@ The latest time at which work may end. No generated mental task will extend beyo
 **Range:** 1 hour to 9 hours, in 0.5-hour increments  
 **Default:** 4 hours
 
-The total number of hours of mental work to schedule in the day. Physical breaks, rest periods, and fixed anchors are not included in this count — only mental tasks.
+The total number of hours of mental work to schedule in the day. Physical breaks and rest periods are never included. Fixed anchors only count when their **Counts toward work target** switch is enabled for that anchor.
 
 #### Max Mental Task Duration
 **Range:** 30 minutes to 180 minutes (3 hours), in 30-minute increments  
 **Default:** 120 minutes (2 hours)
 
 The maximum continuous duration of a single mental task. When a mental task reaches this limit, the scheduler will always insert a break before allowing further mental work. This setting is a hard limit — no mental task in the generated schedule will exceed this value.
+
+For draining fixed anchors inside the work window, this same limit also applies. If a draining anchor is longer than your configured maximum mental task duration, schedule generation is blocked with an actionable validation message so you can shorten that anchor or increase the max mental setting.
 
 #### Min Physical Task Duration
 **Range:** 5 minutes to 60 minutes, in 5-minute increments  
@@ -106,6 +106,11 @@ The time your working day begins. Set the hour and minute using the time picker.
 
 ### 3.2 Breaks & Recovery
 
+Between automatically generated items, ErgoTimer keeps transition space on both sides of a generated break. In practice, the pattern is: generated mental task, breathing space, generated break, breathing space, next generated mental task.
+
+#### Breathing Space
+Breathing space is the transition gap ErgoTimer keeps between generated tasks. If the day is tight, ErgoTimer may shorten this gap in specific spots to keep fixed anchors and required work feasible, while still preserving your configured schedule constraints.
+
 #### Fixed Anchors
 
 Fixed anchors are non-movable schedule blocks that reserve time for lunch, meetings, appointments, therapy, travel, or planned recovery. Each anchor has:
@@ -113,6 +118,7 @@ Fixed anchors are non-movable schedule blocks that reserve time for lunch, meeti
 - **Name** — shown directly in the schedule
 - **Anchor type** — determines when the anchor is placed in the schedule
 - **Energy effect** — how the anchor affects the mental battery
+- **Counts toward work target** — determines whether the anchor duration reduces the remaining generated work
 
 Anchor types:
 
@@ -126,6 +132,13 @@ Energy effects:
 - **Neutral** — reserves time without changing the battery
 - **Restoring** — behaves like a restorative break for battery purposes
 
+Work-accounting defaults:
+
+- **Fixed time** anchors default to counting toward the work target
+- **Before work** anchors default to not counting toward the work target
+- **After work** anchors default to not counting toward the work target
+- You can override this per anchor in the anchor dialog without changing its battery effect
+
 The scheduler never places generated work inside a fixed anchor. Instead, it fills the gaps before, between, and after anchors.
 
 In settings, each anchor card uses a compact two-row layout: the first row shows the anchor icon, name, and metadata; the second row contains the enable switch and edit/delete controls.
@@ -138,25 +151,7 @@ Overlap behavior for fixed-time anchors:
 
 ---
 
-### 3.3 Alerts
-
-#### Sound Alarm on Task End
-**Default:** On
-
-When enabled, an audible alarm plays when a task's countdown timer reaches zero. When disabled, the task ends silently (a notification is still shown).
-
-#### Alarm Ringtone
-Select which sound plays when a task ends. Tap the dropdown to choose from the available options. Use the **Test Sound** button to preview the selected sound.
-
-#### Micro Pause Reminder
-**Range:** Off, 5 to 60 minutes in 5-minute increments  
-**Default:** Off
-
-When enabled, a reminder notification is shown during mental tasks at the specified interval. For example, if set to 30 minutes, a reminder will appear 30 minutes after a mental task begins, encouraging a short break (like making a cup of coffee). Micro-pauses are not separate scheduled tasks — they are reminders within the current task.
-
----
-
-### 3.4 Interface
+### 3.3 Interface
 
 #### Language
 Choose between **English** and **Dutch**. The app will display all text in the selected language.
@@ -169,9 +164,27 @@ ErgoTimer offers three interface modes:
 - **Calm** — task blocks show task name and duration with softer visual styling; per-task energy range is hidden in blocks. The active-task header still shows the live battery percentage bar.
 - **Minimal** — task blocks are icon-only and the active-task header hides the battery percentage bar.
 
+#### Alerts
+
+##### Task Notification Sound
+Select which sound plays when a task ends. Tap the selector to choose from the available options:
+- **None** (silent — the task ends without an audible alarm)
+- **System default** (uses your phone's default notification sound)
+- A specific task-end sound
+
+Use the play icon beside the selector to preview the current task sound (disabled when **None** is selected).
+
+##### Micro-Pause Reminder Sound
+Choose which sound plays for micro-pause reminders. You can select:
+- **None** (silent reminder)
+- **System default** (uses your phone's default notification sound)
+- A specific micro-pause sound
+
+Use the play icon beside the selector to preview the currently selected micro-pause sound (disabled when **None** is selected).
+
 ---
 
-### 3.5 Advanced
+### 3.4 Advanced
 
 #### Debug Mode (Fast Timers)
 **Default:** Off
@@ -184,7 +197,7 @@ When enabled, time is accelerated: 1 hour is treated as 1 minute. This mode is i
 
 The schedule is displayed as a scrollable vertical timeline (calendar view). A time axis on the left shows clock times; colour-coded task blocks are placed at their exact positions on the axis. A horizontal "now" line moves through the timeline as time passes, so you can always see where you are in your day at a glance.
 
-If there is an empty gap between two scheduled tasks, ErgoTimer shows a subtle tappable gap row in that slot. Tapping the gap opens the Add Task dialog pre-filled with the full start and end time of that gap, so you can insert a manual task directly into the free period.
+If there is an empty gap between two scheduled tasks that is larger than the configured breathing space, ErgoTimer shows a subtle tappable gap row in that slot. Tapping the gap opens the same Add Anchor dialog used in settings, pre-filled with that gap's start and end time so you can create a fixed-time anchor in that free period. Gaps that are only as long as the breathing space remain visually quiet and do not show add-task text.
 
 ### Task Block Layout
 
@@ -241,7 +254,7 @@ You can modify individual tasks in the schedule while the day is running (or bef
 Tap any task block to open its detail sheet with the available actions.
 
 ### Adding a Task in an Empty Gap
-If there is visible free time between two tasks, tap the gap row between them to open the time-blocked Add Task dialog. The dialog is pre-filled with the full gap boundaries. ErgoTimer then passes the task directly to the scheduler, which may insert a safety break or split a large mental task into multiple mental and break blocks if needed.
+If there is visible free time between two tasks that exceeds the configured breathing space, tap the gap row between them to open the Add Anchor dialog. The dialog is the same as in Settings and is pre-filled with that gap's start and end time. After saving, ErgoTimer regenerates the schedule using the updated anchor list and immediately applies Catch Up when the day is already running, so the current timeline stays aligned with now. If the new anchor creates an invalid setup, ErgoTimer shows a validation message and keeps the previous schedule. Breathing-space-sized gaps stay quiet in the UI so they are not presented as fillable work slots.
 
 ### Increasing Task Duration (+10 min)
 Tap **+10 min** to add 10 minutes to a task. For mental tasks, the duration cannot exceed the configured maximum mental task time. For rest and physical breaks, the duration can be increased freely.
@@ -305,6 +318,8 @@ When a task's timer reaches zero:
 - A notification is shown with the message "Task Complete!"
 - A dialog appears in the app (if the app is in the foreground)
 
+If the app is open, ErgoTimer handles the task change directly in the app. If the app is in the background, Android handles the scheduled alarm. You do not hear the same task-end sound twice.
+
 Task completion alarms are scheduled using Android's alarm clock mechanism (`AlarmManager.setAlarmClock()`). This ensures the alarm fires at the exact scheduled time even if:
 - The device is in power-saving or Doze mode
 - The app is backgrounded
@@ -337,9 +352,10 @@ This is achieved through:
 - **Broadcast receivers** — recover and re-arm alarms after reboot, time changes, or timezone changes
 
 ### Notification Channels
-ErgoTimer uses two notification channels:
+ErgoTimer uses three notification channels:
 - **Current Task** — the persistent foreground-service countdown notification
-- **Task Completion Alerts** — alarm notifications and micro-pause reminders
+- **Task Completion Alerts** — task end alarms
+- **Micro-Pause Reminders** — micro-pause reminder notifications
 
 You can manage these channels individually in Android's system notification settings for ErgoTimer.
 
@@ -351,19 +367,23 @@ You can manage these channels individually in Android's system notification sett
 
 When you tap **Generate Schedule**, ErgoTimer builds a complete day schedule as follows:
 
-1. **Fixed anchors** are sorted by start time
-2. **Mental tasks** are generated into the available gaps, each up to the maximum mental task duration
-3. **Breaks** are inserted between mental blocks as needed
-4. **Fixed-time anchors** are inserted unchanged at their configured times
-5. **Remaining work** continues in any later gaps until the total work target is reached
-6. **After-work anchors** are placed immediately after the last generated work block, regardless of any fixed-time anchors scheduled later in the day
+1. ErgoTimer first runs feasibility checks; if your settings cannot produce a safe schedule, generation is blocked with a clear error
+2. **Fixed anchors** are sorted by start time
+3. **Mental tasks** are generated into the available gaps, each up to the maximum mental task duration
+4. **Breaks** are inserted between mental blocks as needed
+5. **Fixed-time anchors** are inserted unchanged at their configured times
+6. **Remaining work** continues in any later gaps until the total work target is reached, after subtracting any anchors that count toward work
+7. **After-work anchors** are placed immediately after the last generated work block, regardless of any fixed-time anchors scheduled later in the day
+8. If no generated work block exists on that day, **after-work anchors** are not placed; they stay enabled in settings and ErgoTimer returns a warning instead
+
+Anchors that are very close together are treated as one block. In those cases, ErgoTimer does not insert generated tasks between them.
 
 ### Rest Duration Calculation
 
-The minimum rest time after a mental task is calculated proportionally:
+The minimum rest time after a mental task is calculated from the battery drain since the last restorative break:
 
 ```
-min_rest = (mental_task_duration / max_mental_duration) × min_physical_duration
+min_rest = (battery_at_cycle_start − battery_after_mental_task) × min_physical_duration
 ```
 
 This value is always rounded up to the nearest 10 minutes.
@@ -371,6 +391,8 @@ This value is always rounded up to the nearest 10 minutes.
 **Example:**  
 Max mental duration = 120 min, Min physical duration = 30 min, Mental task = 60 min  
 → min_rest = (60 / 120) × 30 = 15 min → rounded up to 20 min
+
+If a draining anchor reduced your battery before that mental task, that drain is included in this calculation. This prevents too-short breaks after anchor-heavy periods.
 
 ### Anchor-Aware Scheduling
 
@@ -421,5 +443,5 @@ To change the language, open Settings → Interface → Language.
 *For questions or support, contact [ddt3@redgrendel.com](mailto:ddt3@redgrendel.com)*
 
 <div class="right-align">
-ErgoTimer version 0.2.5
+ErgoTimer version 0.2.9
 </div>

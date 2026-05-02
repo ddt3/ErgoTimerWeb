@@ -82,5 +82,5 @@ We may update this privacy statement from time to time. Any changes will be publ
 If you have any questions about this privacy statement or how ErgoTimer handles your data, please send an email to [ddt3@redgrendel.com](mailto:ddt3@redgrendel.com).
 
 <div class="right-align">
-ErgoTimer version 0.2.5
+ErgoTimer version 0.2.9
 </div>

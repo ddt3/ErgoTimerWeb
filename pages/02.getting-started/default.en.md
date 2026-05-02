@@ -66,20 +66,24 @@ Set the boundaries of your full day. These four times tell ErgoTimer when it may
 ### Breaks & Recovery
 
 - **Micro Pause Reminder**: If you want gentle reminders to take a short break during long mental tasks, set an interval here (e.g. every 30 minutes).
+- **Breathing Space**: This is the transition time ErgoTimer keeps between generated tasks. A larger value gives calmer transitions; a smaller value leaves more room for work blocks.
 
 ### Fixed Anchors
 
 - **Fixed Anchors**: Add non-movable blocks such as lunch, appointments, therapy, or planned recovery time. ErgoTimer will never place generated work inside these time windows.
 - **Fixed-time anchors** show their start and end time in the anchor list; **before-work and after-work anchors** show their type label and duration.
+- **Counts toward work target**: Each anchor has a switch that controls whether its duration counts toward your daily work target. Fixed-time anchors default to on; before-work and after-work anchors default to off. Turn it off for appointments or other non-work commitments that still need to reserve time.
 - Overlapping fixed-time anchors can be pre-configured, but do not keep conflicting anchors enabled at the same time when generating a schedule.
 - **Draining**: Use this for anchors that cost mental energy, such as a meeting or medical intake.
 - **Neutral**: Use this for anchors that should reserve time without changing your energy level, such as lunch or travel.
 - **Restoring**: Use this for anchors that help you recover, such as a nap, therapy exercise, or a guided rest block.
+- For draining anchors inside your work window, keep the anchor duration at or below your **Max Mental Task Duration** setting.
 
 ### Alerts
 
 - **Sound Alarm on Task End**: Make sure this is turned on so you hear an alarm when a task finishes.
-- **Alarm Ringtone**: Choose which sound plays at the end of a task.
+- **Task notification sound**: Choose which sound plays at the end of a task. Use the play icon next to the selector to preview it.
+- **Micro-pause reminder sound**: Choose a sound for micro-pause reminders. You can pick **Default sound**, a specific micro-pause sound, or **No sound**.
 
 ### Interface
 
@@ -96,6 +100,8 @@ Set the boundaries of your full day. These four times tell ErgoTimer when it may
 Once you have entered your settings, tap the **Generate Schedule** button at the bottom of the settings panel.
 
 ErgoTimer will create a personalised schedule for the day, with mental tasks, physical breaks, and rest periods automatically balanced based on your settings.
+
+If your current settings cannot produce a safe schedule (for example due to conflicting anchors, a draining anchor that is longer than your max mental duration, or too little available time), ErgoTimer shows a clear validation message so you can adjust settings and try again.
 
 ---
 
@@ -148,7 +154,7 @@ You can adjust the schedule directly in the calendar view while the day is runni
 - Tap any non-active task block to open its detail sheet with adjustment controls
 - Use the **+10 min** and **−10 min** buttons to make the task longer or shorter
 - For rest and physical breaks, you can switch between the two types using the toggle button
-- If you see an empty gap between two tasks, tap that gap to open the Add Task dialog already filled with the gap's full start and end time
+- If you see an empty gap between two tasks that is larger than your configured breathing space, tap that gap to open the Add Anchor dialog (the same one as in settings), pre-filled with the gap's full start and end time
 
 Any adjustments automatically recalculate the rest of the schedule so your total work hours are preserved.
 
@@ -167,5 +173,5 @@ Any adjustments automatically recalculate the rest of the schedule so your total
 *Once your settings are saved, starting a new day is as simple as opening the app and tapping **Catch Up** or **Restart**, depending on your situation.*
 
 <div class="right-align">
-ErgoTimer version 0.2.5
+ErgoTimer version 0.2.9
 </div>
