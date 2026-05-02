@@ -1,3 +1,31 @@
 .right-align {
   text-align: right;
 }
+
+.overlay .mobile-language-selector {
+  margin: 0.75rem 1rem 0;
+}
+
+.overlay .mobile-language-selector .language-selector > ul,
+.overlay .mobile-language-selector .language-selector ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.overlay .mobile-language-selector .language-selector > ul > li > a {
+  display: inline-block;
+  color: #fff;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+}
+
+.overlay .mobile-language-selector .language-selector > ul > li > ul {
+  margin-top: 0.5rem;
+}
+
+.overlay .mobile-language-selector .language-selector > ul > li > ul a {
+  color: #fff;
+}

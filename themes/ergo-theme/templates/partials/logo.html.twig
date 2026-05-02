@@ -1,0 +1,22 @@
+{% set logo = theme_var(mobile ? 'custom_logo_mobile' : 'custom_logo') %}
+{% if mobile and not logo %}
+  {% set logo = theme_var('custom_logo') %}
+{% endif %}
+
+{% set logo_src = null %}
+{% if logo %}
+  {% set logo_file = logo|first %}
+  {% if logo_file.path is defined and logo_file.path %}
+    {% set logo_src = url(logo_file.path) %}
+  {% elseif logo_file.name is defined and logo_file.name %}
+    {% set logo_src = url('theme://images/logo/' ~ logo_file.name) %}
+  {% endif %}
+{% endif %}
+
+<a href="{{ home_url }}" class="navbar-brand mr-10">
+{% if logo_src %}
+  <img src="{{ logo_src }}" alt="{{ site.title }}" />
+{% else %}
+  <img src="{{ url('theme://images/logo/app_icon-cropped.png') }}" alt="{{ site.title }}" />
+{% endif %}
+</a>
